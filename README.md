@@ -17,6 +17,8 @@ source venv/bin/activate
 
 # Luego por consola..
 pip list
+pip install django
+pip install mysqlclient
 # con el comando pip list miramos que este intalado django y mysqlclient, luego..
 
 # hacer la migracion a la bd, luego..
