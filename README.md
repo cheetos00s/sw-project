@@ -16,6 +16,7 @@ source venv/bin/activate
 .\venv\Scripts\activate
 
 # Luego por consola..
+<<<<<<< HEAD
 pip install django
 
 pip install mysqlclient
@@ -27,5 +28,23 @@ py manage.py makemigrations
 py manage.py migrate
 
 # // run
+=======
+pip list
+pip install django
+pip install mysqlclient
+# con el comando pip list miramos que este intalado django y mysqlclient, luego..
+
+# hacer la migracion a la bd, luego..
+py manage.py makemigrations
+py manage.py migrate
+
+# crear el usuario admin, luego..
+py manage.py createsuperuser
+# con: [username: admin, email: admin@admin.com, password: admin1234]
+# despues oprimir [Y] en la consola para aceptar
+# Por último arrancar el projecto..
+
+# // run [comando para arrancar el projecto django]
+>>>>>>> b2582d48cd86ebf359d301421cbf65aa0336f794
 py manage.py runserver
 

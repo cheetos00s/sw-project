@@ -1,4 +1,5 @@
 /*-----------------------------------
+<<<<<<< HEAD
 # START CONFIGURATION TEMPLATE
 -----------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
@@ -207,6 +208,17 @@
     }
   }
 
+=======
+# START CONFIGURATION
+-----------------------------------*/
+html,
+body {
+    height: 100%;
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+>>>>>>> b2582d48cd86ebf359d301421cbf65aa0336f794
 /*-----------------------------------
 # FOOTER
 -----------------------------------*/
@@ -233,6 +245,7 @@
 
 .side-label {
     width: 45px;
+<<<<<<< HEAD
 }
 
 /*-----------------------------------
@@ -697,3 +710,6 @@ background-color: #0080ff;
     row-gap: 15px;
   }
 }
+=======
+}
+>>>>>>> b2582d48cd86ebf359d301421cbf65aa0336f794

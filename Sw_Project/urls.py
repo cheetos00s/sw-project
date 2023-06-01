@@ -13,6 +13,7 @@ urlpatterns = [
     # Login/logout
     path('login/', views.Login, name="login"),
     path('login_user/', views.LoginUser, name="login_user"),
+<<<<<<< HEAD
     path('logout/', views.LogoutUser, name="logout"),
 
      # PAIS
@@ -26,5 +27,8 @@ urlpatterns = [
     path('pais_edit', views.pais_edit, name="pais_edit"),
     # Delete product
     path('pais_delete/<str:pais_id>', views.pais_delete, name="pais_delete"),
+=======
+    path('logout/', views.LogoutUser, name="logout")
+>>>>>>> b2582d48cd86ebf359d301421cbf65aa0336f794
 
 ]
