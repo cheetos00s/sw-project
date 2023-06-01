@@ -1,10 +1,7 @@
 from django.shortcuts import render
-<<<<<<< HEAD
 #
 from App.models import Pais
 from django.utils import timezone
-=======
->>>>>>> b2582d48cd86ebf359d301421cbf65aa0336f794
 
 # New imports
 from django.http import HttpResponseRedirect
@@ -22,10 +19,6 @@ def frontend(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def backend(request):
     return render(request, "App/backend.html")
-<<<<<<< HEAD
-=======
-# -----------------------------------------|
->>>>>>> b2582d48cd86ebf359d301421cbf65aa0336f794
 
 # Login Function
 def Login(request):
@@ -52,7 +45,6 @@ def LoginUser(request):
 def LogoutUser(request):
     logout(request)
     request.user = None
-<<<<<<< HEAD
     return HttpResponseRedirect('/')
 
 #|------------------------------------|
@@ -106,6 +98,3 @@ def pais_delete(request, pais_id):
         pais.save()
 
     return HttpResponseRedirect("/pais_list/")
-=======
-    return HttpResponseRedirect('/')
->>>>>>> b2582d48cd86ebf359d301421cbf65aa0336f794
