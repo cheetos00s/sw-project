@@ -1,0 +1,53 @@
+{% extends 'App/base.html' %}
+
+<!-- Title on the browser tab -->
+{% block title %} Countries {% endblock title %}
+
+{% block content %}
+
+<div class="table-container">
+
+    <table>
+        <thead>
+            <tr>
+            <th><a href="{% url 'pais_add' %}" class="add_list"><i class="fas fa-plus"></i></a></th>
+            <th style="width: 2%;">#</th>
+            <th style="width: 35%;">Name</th>
+            <th style="width: 21%;">Created at</th>
+            <th style="width: 22%;">Updated at</th>
+            <th colspan="2" style="width: 10%;">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+            <!-- Dados vindos do BD -->
+            {% for pais in paises %}
+            <tr>
+                <!-- (Opcional)
+                <td data-label="Id" id="table-top">{{ product.id }}</td>
+                -->
+                <td></td>
+                <td>{{ pais.id }}</td>
+                <td>{{ pais.name }}</td>
+                <td>{{ pais.created_at | date:'m/d/Y (H:i)' }}</td>
+                <td>{{ pais.updated_at | date:'m/d/Y (H:i)' }}</td>
+                <td>
+                    <a href="/pais/{{ pais.id }}" class="btn btn-warning btn-actions" title="Edit pais">
+                        <i class="fas fa-pen"></i>
+                    </a>
+                </td>
+                <td>
+                    <!-- Delete confirmations JS onclick="return confirm('Are you sure want to delete the record?')" incluir dentro de <a> -->
+                    <a href="/pais_delete/{{ pais.id }}" class="btn btn-secondary btn-actions" title="Delete pais">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

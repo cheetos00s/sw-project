@@ -1,0 +1,31 @@
+{% extends 'App/base.html' %}
+
+<!-- Title on tab -->
+{% block title %} Add Country {% endblock title %}
+
+<!-- Page Content -->
+{% block content %}
+<div class="table-container">
+    
+    <section class="container">
+        <header>{% block card-title %}Country Registration Form {% endblock card-title %}</header>
+        <form {% block Action %} action="/pais_add" {% endblock Action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="form">
+        {% csrf_token %}
+
+        <!-- ====== Block Id hidden here ====== -->
+        {% block Value-id %} {% endblock Value-id %}
+        <div class="input-box">
+            <label>Country Name</label>
+            <input type="text" placeholder="Enter Country name" name="name" maxlength="40" placeholder="Product name" required {% block Value-name %}{% endblock Value-name %} required />
+        </div>
+        <br>
+        <button type="submit" >{% block Btn-action %}&nbsp;&nbsp; Add Country {% endblock Btn-action %}</button>
+        <button type="reset" style="background-color: #0b2239;" ><i class="fas fa-sync-alt"></i></button>
+        
+        
+        </form>
+    </section>
+    
+</div>
+
+{% endblock content %}

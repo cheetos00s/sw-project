@@ -1,0 +1,25 @@
+{% extends 'App/base.html' %}
+
+<!-- Page content -->
+{% block content %}
+<h1 class="container text-info" 
+style="width: 80%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%); text-align: center;">FRONTEND</h1>
+
+<!-- Messages from backend -->
+
+{% for message in messages %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if message.tags == 'info' %}
+    <script>
+        var m = "{{ message }}"
+        swal("Blocked !", m, "info")
+    </script>
+    {% elif message.tags == 'error' %}
+    <script>
+        var m = "{{ message }}"
+        swal("Denied !", m, "error")
+    </script>
+    {% endif %}
+{% endfor %}
+
+{% endblock content %}

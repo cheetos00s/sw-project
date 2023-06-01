@@ -1,0 +1,699 @@
+/*-----------------------------------
+# START CONFIGURATION TEMPLATE
+-----------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+  }
+  body {
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  nav {
+    background: #0b2239;
+    padding: 0 15px;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  .menu,
+  .submenu {
+    list-style-type: none;
+    cursor: pointer;
+  }
+  .logo {
+    font-size: 20px;
+    padding: 7.5px 10px 7.5px 0;
+  }
+  .item {
+    padding: 10px;
+  }
+  .item.button {
+    padding: 9px 5px;
+  }
+  .item:not(.button) a:hover,
+  .item a:hover::after {
+    color: #ccc;
+  }
+  /* Mobile menu */
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu li a {
+    display: block;
+    padding: 15px 5px;
+  }
+  .menu li.subitem a {
+    padding: 15px;
+  }
+  .toggle {
+    order: 1;
+    font-size: 20px;
+  }
+  .item.button {
+    order: 2;
+  }
+  .item {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+  .active .item {
+    display: block;
+  }
+  .button.secondary {
+    /* divider between buttons and menu links */
+    border-bottom: 1px #444 solid;
+  }
+  /* Submenu up from mobile screens */
+  .submenu {
+    display: none;
+  }
+  .submenu-active .submenu {
+    display: block;
+    cursor: pointer;
+  }
+  .has-submenu i {
+    font-size: 12px;
+  }
+  .has-submenu > a::after {
+    font-family: "Font Awesome 5 Free";
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 900;
+    content: "\f078";
+    color: white;
+    padding-left: 5px;
+    cursor: pointer;
+  }
+  .subitem a {
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  .submenu-active {
+    background-color: #0080ff;
+    border: 1px royalblue solid;
+    border-radius: 1px;
+  }
+  
+  /* Tablet menu */
+  @media (min-width: 700px) {
+    .menu {
+      justify-content: center;
+    }
+    .logo {
+      flex: 1;
+    }
+    .item.button {
+      width: auto;
+      order: 1;
+      display: block;
+    }
+    .toggle {
+      flex: 1;
+      text-align: right;
+      order: 2;
+    }
+    /* Button up from tablet screen */
+    .menu li.button a {
+      padding: 10px 15px;
+      margin: 5px 0;
+    }
+    .button a {
+      background: #0080ff;
+      border: 1px royalblue solid;
+    }
+    .button.secondary {
+      border: 0;
+    }
+    .button.secondary a {
+      background: transparent;
+      border: 1px #0080ff solid;
+    }
+    .button a:hover {
+      text-decoration: none;
+    }
+    .button a:hover {
+      background: royalblue;
+      border-color: darkblue;
+    }
+    /*LOGOUT BUTTON*/
+    .menu li.button2 a {
+      padding: 10px 15px;
+      margin: 5px 0;
+    }
+    .button2 a {
+      background: red;
+      border: 1px red solid;
+    }
+    .button2.secondary {
+      border: 0;
+    }
+    .button2.secondary a {
+      background: transparent;
+      border: 1px red solid;
+    }
+    .button2 a:hover {
+      text-decoration: none;
+    }
+    .button2 a:hover {
+      background: red;
+      border-color: red;
+    }
+  }
+  /* Desktop menu */
+  @media (min-width: 960px) {
+    .menu {
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      background: none;
+    }
+    .logo {
+      order: 0;
+    }
+    .item {
+      order: 1;
+      position: relative;
+      display: block;
+      width: auto;
+    }
+    .button {
+      order: 2;
+    }
+    .submenu-active .submenu {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 68px;
+      background: #0b2239;
+    }
+    .menu li.subitem a:hover{
+      display: inline-block;
+    }
+    
+    .toggle {
+      display: none;
+    }
+    .submenu-active {
+      border-radius: 0;
+    }
+  }
+
+/*-----------------------------------
+# FOOTER
+-----------------------------------*/
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+#footer,
+.push {
+    height: 50px;
+}
+/*-----------------------------------
+# NAVBAR
+-----------------------------------*/
+#btn-nav {
+    width: 90px;
+    float: right;
+    margin-right: 25px;
+}
+
+/*-----------------------------------
+# OTHERS
+-----------------------------------*/
+
+.side-label {
+    width: 45px;
+}
+
+/*-----------------------------------
+# LOGIN
+-----------------------------------*/
+
+.button {
+  color: #fff;
+}
+
+.button {
+  padding: 6px 24px;
+  border: 2px solid #fff;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.button:active {
+  transform: scale(0.98);
+}
+
+/* Home */
+.home {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-image: url("bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.home::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease-out;
+}
+.home.show::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* From */
+.form_container {
+  position: fixed;
+  max-width: 320px;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  z-index: 101;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease-out;
+}
+.home.show .form_container {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.signup_form {
+  display: none;
+}
+.form_container.active .signup_form {
+  display: block;
+}
+.form_container.active .login_form {
+  display: none;
+}
+.form_close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #0b0217;
+  font-size: 22px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.form_container h2 {
+  font-size: 22px;
+  color: #0b0217;
+  text-align: center;
+}
+.input_box {
+  position: relative;
+  margin-top: 30px;
+  width: 100%;
+  height: 40px;
+}
+.input_box input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0 30px;
+  color: #333;
+  transition: all 0.2s ease;
+  border-bottom: 1.5px solid #aaaaaa;
+}
+.input_box input:focus {
+  border-color: #0080ff;
+}
+.input_box i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #707070;
+}
+.input_box i.email,
+.input_box i.password {
+  left: 0;
+}
+.input_box input:focus ~ i.email,
+.input_box input:focus ~ i.password {
+  color: #0080ff;
+}
+.input_box i.pw_hide {
+  right: 0;
+  font-size: 18px;
+  cursor: pointer;
+}
+.option_field {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form_container a {
+  color: royalblue;
+  font-size: 12px;
+}
+.form_container a:hover {
+  text-decoration: underline;
+}
+.checkbox {
+  display: flex;
+  column-gap: 8px;
+  white-space: nowrap;
+}
+.checkbox input {
+  accent-color: royalblue;
+}
+.checkbox label {
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  color: #0b0217;
+}
+.form_container .button {
+  background: royalblue;
+  margin-top: 30px;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+.form_container .button:hover {
+  background: #0b2239;
+  margin-top: 30px;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+
+/*-----------------------------------
+# TABLE
+-----------------------------------*/
+
+
+.table-container{
+display: flex;
+justify-content: center;
+margin:20vh auto;
+width: 80%;
+background-color: #fff;
+border-radius: 10px;
+padding: 5px;
+}
+
+table{
+width: 100%;
+
+border-collapse: collapse;
+}
+
+tr:nth-of-type(even){
+background-color: #fff;
+color: #333;
+}
+
+th{
+background-color: royalblue;
+color: #fff;
+font-weight: 800;
+font-size: 20px;
+}
+
+td,th{
+padding: 12px;
+border: 1px solid #ccc;
+text-align: center;
+}
+
+.label{
+display: inline;
+padding: 0.2em 0.6em 0.3em;
+font-size: 75%;
+font-weight: 700;
+line-height: 1;
+color: #fff;
+text-align: center;
+white-space: nowrap;
+vertical-align: baseline;
+border-radius: 0.25em;
+}
+.label-success{
+background-color: #5cb85c;
+}
+
+.label-warning{
+background-color: #f0ad4e;
+}
+
+.label-danger{
+background-color: #d9534f;
+}
+
+.btn{
+color: #fff;
+background-color: #0b2239;
+font-size: 13px;
+padding: 5px 8px;
+border: none;
+border-radius: 2px;
+transition: all 0.3s ease;
+text-decoration: none;
+}
+.btn:hover{
+background-color: #0080ff;
+}
+  
+  
+@media only screen and (max-width:768px),
+(min-device-width:768px) and (max-device-width:992px){
+  .table-container{
+      width:95%;
+      background: transparent;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr{
+      display: block;
+  }
+
+  thead tr{
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+  }
+
+  tr{
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+  }
+
+  td{
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+      text-align: right;
+  }
+
+  td::before{
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: left;
+  }
+
+  td:nth-of-type(1)::before{
+      content: "#";
+  }
+
+  td:nth-of-type(2)::before{
+      content: "Full Name";
+  }
+
+  td:nth-of-type(3)::before{
+      content: "Age";
+  }
+
+  td:nth-of-type(4)::before{
+      content: "Status";
+  }
+
+  td:nth-of-type(5)::before{
+      content: "Job Title";
+  }
+
+  td:nth-of-type(6)::before{
+      content: "Action";
+  }
+
+}
+
+/* FORM */
+.add_list {
+  text-align: center;
+  display: inline-block;
+  padding: 10px 16px;
+  margin: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #0b2239;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container {
+  position: relative;
+  top: 10%;
+  bottom: -70px; 
+  left: 10%; 
+  margin-right: -50%; 
+  transform: translate(-50%, -50%); 
+  text-align: center;
+  max-width: 700px;
+  width: 80%; 
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: rgb(130, 106, 251);
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(130, 106, 251);
+}
+.form a {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(130, 106, 251);
+}
+.form button:hover {
+  background: rgb(88, 56, 250);
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
