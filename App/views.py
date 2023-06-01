@@ -9,19 +9,19 @@ from django.views.decorators.cache import cache_control
 
 # Frontend
 def frontend(request):
-    return render(request, "frontend.html")
+    return render(request, "App/frontend.html")
 
 # Backend
 @login_required(login_url="/login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def backend(request):
-    return render(request, "backend.html")
+    return render(request, "App/backend.html")
 # -----------------------------------------|
 
 # Login Function
 def Login(request):
     if request.user.is_authenticated:
-        return render(request, "backend.html")
+        return render(request, "App/backend.html")
     else:
         messages.info(request, "Please login to access this page.")
         return HttpResponseRedirect('/')

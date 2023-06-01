@@ -22,6 +22,7 @@ pip install mysqlclient
 # con el comando pip list miramos que este intalado django y mysqlclient, luego..
 
 # hacer la migracion a la bd, luego..
+py manage.py makemigrations
 py manage.py migrate
 
 # crear el usuario admin, luego..
