@@ -1,0 +1,23 @@
+{% extends 'App/facultad_add.html' %}
+
+<!-- Title on tab -->
+{% block title %} Edit School {% endblock title %}
+
+{% block card-title %} <strong> Registered at: </strong> <span> {{ facultad.created_at | date:'m/d/Y (H:i)' }} </span> {% endblock card-title %}
+
+<!-- Form Action -->
+{% block Action %} action="/facultad_edit" {% endblock Action %}
+
+<!-- Button Action (content) -->
+{% block Btn-action %} <i class="fas fa-server"></i>&nbsp;&nbsp; Save Changes {% endblock Btn-action %}
+
+<!-- =========== All <inputs> =========== -->
+<!-- Block ID -->
+{% block Value-id %}
+<div class="input-group mb-3">
+    <span class="side-label btn "><i class="fas fa-key"></i></span>
+    <input type="text" class="form-control" name="id" value="{{ facultad.id }}" readonly>
+</div>
+{% endblock Value-id %}
+<!-- Name -->
+{% block Value-name %} value="{{ facultad.name }}" {% endblock Value-name %}

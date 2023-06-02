@@ -1,0 +1,47 @@
+{% extends 'App/base.html' %}
+
+<!-- Title on tab -->
+{% block title %} Add City {% endblock title %}
+
+<!-- Page Content -->
+{% block content %}
+<div class="table-container">
+    
+    <section class="container" style="margin-top: 10%;">
+        <header>{% block card-title %}City Registration Form {% endblock card-title %}</header>
+        <form {% block Action %} action="/ciudad_add" {% endblock Action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="form">
+        {% csrf_token %}
+
+        <!-- ====== Block Id hidden here ====== -->
+        {% block Value-id %}{% endblock Value-id %}
+        <div class="input-box">
+            <label>City Name</label>
+            <input type="text" placeholder="Enter City name" name="name" maxlength="40" placeholder="City name" required {% block Value-name %}{% endblock Value-name %}  />
+        </div>
+        <div class="input-box">
+            <label>Country</label>
+            <select class="input-box" name="pais_id" required>
+                <option value="">Select Country</option>
+                {% for pais in paises %}
+                    <option value="{{ pais.id }}">{{ pais.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        
+        
+        <div class="input-box">
+            <label>City Address</label>
+            <input type="text" placeholder="Enter City address" name="direccion" maxlength="40" placeholder="City address" required {% block Value-direccion %}{% endblock Value-direccion %}  />
+        </div>
+        <br>
+        <button type="submit" >{% block Btn-action %}&nbsp;&nbsp; Add City {% endblock Btn-action %}</button>
+        <button type="text" style="background-color: #0b2239;" ><a style="background-color: #0b2239;" href="{% url 'ciudad_list' %}">Cancel</a></button>
+        
+        
+        </form>
+    </section>
+    
+</div>
+
+{% endblock content %}
