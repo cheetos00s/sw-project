@@ -24,8 +24,6 @@ class Pais(models.Model):
 
 class Facultad(models.Model):
     name = models.CharField(max_length=100)
-    nit = models.CharField(max_length=100)
-    direccion = models.CharField(max_length=100)
     status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -35,6 +33,8 @@ class Facultad(models.Model):
     
 class Empresa(models.Model):
     name = models.CharField(max_length=100)
+    nit = models.CharField(max_length=100)
+    direccion = models.CharField(max_length=100)
     status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

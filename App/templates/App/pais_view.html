@@ -10,7 +10,7 @@
 
 <!-- Card (color and title) -->
 {% block card-color %} border-dark bg-warning {% endblock card-color %}
-{% block card-title %} <strong> Registered at: </strong> <span> {{ product.created_at | date:'m/d/Y (H:i)' }} </span> {% endblock card-title %}
+{% block card-title %} <strong> Registered at: </strong> <span> {{ pais.created_at | date:'m/d/Y (H:i)' }} </span> {% endblock card-title %}
 
 <!-- Form Action -->
 {% block Action %} action="/pais_edit" {% endblock Action %}
@@ -20,9 +20,9 @@
 
 <!-- =========== All <inputs> =========== -->
 <!-- Block ID -->
-{% block Value-id %} 
+{% block Value-id %}
 <div class="input-group mb-3">
-    <span class="side-label btn border-secondary bg-light"><i class="fas fa-key"></i></span>
+    <span class="side-label btn "><i class="fas fa-key"></i></span>
     <input type="text" class="form-control" name="id" value="{{ pais.id }}" readonly>
 </div>
 {% endblock Value-id %}

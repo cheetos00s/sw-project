@@ -13,14 +13,14 @@
         {% csrf_token %}
 
         <!-- ====== Block Id hidden here ====== -->
-        {% block Value-id %} {% endblock Value-id %}
+        {% block Value-id %}{% endblock Value-id %}
         <div class="input-box">
             <label>Country Name</label>
-            <input type="text" placeholder="Enter Country name" name="name" maxlength="40" placeholder="Product name" required {% block Value-name %}{% endblock Value-name %} required />
+            <input type="text" placeholder="Enter Country name" name="name" maxlength="40" placeholder="Product name" required {% block Value-name %}{% endblock Value-name %}  />
         </div>
         <br>
         <button type="submit" >{% block Btn-action %}&nbsp;&nbsp; Add Country {% endblock Btn-action %}</button>
-        <button type="reset" style="background-color: #0b2239;" ><i class="fas fa-sync-alt"></i></button>
+        <button type="text" style="background-color: #0b2239;" ><a style="background-color: #0b2239;" href="{% url 'pais_list' %}">Cancel</a></button>
         
         
         </form>

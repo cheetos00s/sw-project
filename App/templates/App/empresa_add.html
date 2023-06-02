@@ -1,0 +1,39 @@
+{% extends 'App/base.html' %}
+
+<!-- Title on tab -->
+{% block title %} Add Company {% endblock title %}
+
+<!-- Page Content -->
+{% block content %}
+<div class="table-container">
+    
+    <section class="container" style="margin-top: 10%;">
+        <header>{% block card-title %}Company Registration Form {% endblock card-title %}</header>
+        <form {% block Action %} action="/empresa_add" {% endblock Action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="form">
+        {% csrf_token %}
+
+        <!-- ====== Block Id hidden here ====== -->
+        {% block Value-id %}{% endblock Value-id %}
+        <div class="input-box">
+            <label>Company Name</label>
+            <input type="text" placeholder="Enter Company name" name="name" maxlength="40" placeholder="Company name" required {% block Value-name %}{% endblock Value-name %}  />
+        </div>
+        <div class="input-box">
+            <label>Company Nit</label>
+            <input type="text" placeholder="Enter Company nit" name="nit" maxlength="40" placeholder="Company nit" required {% block Value-nit %}{% endblock Value-nit %}  />
+        </div>
+        <div class="input-box">
+            <label>Company Address</label>
+            <input type="text" placeholder="Enter Company address" name="direccion" maxlength="40" placeholder="Company address" required {% block Value-direccion %}{% endblock Value-direccion %}  />
+        </div>
+        <br>
+        <button type="submit" >{% block Btn-action %}&nbsp;&nbsp; Add Company {% endblock Btn-action %}</button>
+        <button type="text" style="background-color: #0b2239;" ><a style="background-color: #0b2239;" href="{% url 'empresa_list' %}">Cancel</a></button>
+        
+        
+        </form>
+    </section>
+    
+</div>
+
+{% endblock content %}
