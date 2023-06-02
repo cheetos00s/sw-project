@@ -283,6 +283,10 @@ def ciudad_list(request):
 # Funtion to insert product
 
 def ciudad_add(request):
+    pais = Pais.objects.all()
+    context  = {
+        'pais' : pais
+    }
     if request.method == "POST":
         if request.POST.get('name') and request.POST.get('pais_id'):
             ciudad = Ciudad()
@@ -294,7 +298,7 @@ def ciudad_add(request):
             ciudad.save()
             return HttpResponseRedirect("ciudad_list/")
     else:
-        return render(request, 'App/ciudad_add.html')
+        return render(request, 'App/ciudad_add.html',context)
 
 
 # Function to view candidate individually
@@ -311,6 +315,7 @@ def ciudad_edit(request):
         empresa_name = request.POST.get('name')
         empresa_nit = request.POST.get('nit')
         empresa_direccion = request.POST.get('direccion')
+        
         empresa = Empresa.objects.get(id=empresa_id)
         if empresa != None:
             empresa.name = empresa_name

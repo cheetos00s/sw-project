@@ -1,5 +1,5 @@
 {% extends 'App/base.html' %}
-
+{% load static %}
 <!-- Title on tab -->
 {% block title %} Add City {% endblock title %}
 
@@ -7,7 +7,7 @@
 {% block content %}
 <div class="table-container">
     
-    <section class="container" style="margin-top: 10%;">
+    <section class="container">
         <header>{% block card-title %}City Registration Form {% endblock card-title %}</header>
         <form {% block Action %} action="/ciudad_add" {% endblock Action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="form">
         {% csrf_token %}
@@ -22,8 +22,8 @@
             <label>Country</label>
             <select class="input-box" name="pais_id" required>
                 <option value="">Select Country</option>
-                {% for pais in paises %}
-                    <option value="{{ pais.id }}">{{ pais.name }}</option>
+                {% for paises in pais %}
+                    <option value="{{ paises.id }}">{{ paises.name }}</option>
                 {% endfor %}
             </select>
         </div>
