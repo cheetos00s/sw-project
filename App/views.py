@@ -1,6 +1,6 @@
 from django.shortcuts import render
 #
-from App.models import Pais, Facultad, Empresa, Institucion
+from App.models import Pais, Facultad, Empresa, Institucion, Ciudad
 from django.utils import timezone
 
 # New imports
@@ -257,6 +257,64 @@ def empresa_edit(request):
 
 # Delete Function
 def empresa_delete(request, empresa_id):
+    empresa = Empresa.objects.get(id=empresa_id)
+    if empresa:
+        empresa.status = 0
+        empresa.save()
+
+    return HttpResponseRedirect("/empresa_list/")
+
+#|------------------------------------|
+#             Ciudad
+#|------------------------------------|
+
+# Function to render the page with all produts
+def ciudad_list(request):
+    all_ciudad_list = Ciudad.objects.filter(status=1).order_by('-created_at')
+    return render(request, 'App/ciudad_list.html', {"ciudades": all_ciudad_list})
+
+# Funtion to insert product
+
+def ciudad_add(request):
+    if request.method == "POST":
+        if request.POST.get('name') and request.POST.get('pais_id'):
+            ciudad = Ciudad()
+            ciudad.name = request.POST.get('name')
+            ciudad.pais_id = request.POST.get('pais_id') 
+            ciudad.status = 1  # Set status=1 by default
+            ciudad.created_at = timezone.now()  # Set created_at to current timestamp
+            ciudad.updated_at = timezone.now()
+            ciudad.save()
+            return HttpResponseRedirect("ciudad_list/")
+    else:
+        return render(request, 'App/ciudad_add.html')
+
+
+# Function to view candidate individually
+def ciudad(request, empresa_id):
+    empresa = Empresa.objects.get(id = empresa_id)
+    if empresa != None:
+        return render(request, "App/empresa_view.html", {'empresa':empresa})
+
+
+# Function to Edit product
+def ciudad_edit(request):
+    if request.method == "POST":
+        empresa_id = request.POST.get('id')
+        empresa_name = request.POST.get('name')
+        empresa_nit = request.POST.get('nit')
+        empresa_direccion = request.POST.get('direccion')
+        empresa = Empresa.objects.get(id=empresa_id)
+        if empresa != None:
+            empresa.name = empresa_name
+            empresa.nit = empresa_nit
+            empresa.direccion = empresa_direccion
+            empresa.save()
+            return HttpResponseRedirect("/empresa_list/")
+
+
+# Delete Function
+def ciudad_delete(request, empresa_id):
     empresa = Empresa.objects.get(id=empresa_id)
     if empresa:
         empresa.status = 0

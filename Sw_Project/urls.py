@@ -48,7 +48,7 @@ urlpatterns = [
     # Delete 
     path('institucion_delete/<str:institucion_id>', views.institucion_delete, name="institucion_delete"),
 
-     # EMPRESA
+    # EMPRESA
     path('empresa_list/', views.empresa_list, name="empresa_list"),
     # Path to add 
     path('empresa_add',views.empresa_add, name='empresa_add'),
@@ -58,4 +58,15 @@ urlpatterns = [
     path('empresa_edit', views.empresa_edit, name="empresa_edit"),
     # Delete 
     path('empresa_delete/<str:empresa_id>', views.empresa_delete, name="empresa_delete"),
+
+    # EMPRESA
+    path('ciudad_list/', views.ciudad_list, name="ciudad_list"),
+    # Path to add 
+    path('ciudad_add',views.ciudad_add, name='ciudad_add'),
+    # Access data individually
+    path('ciudad/<str:ciudad_id>', views.ciudad, name = "ciudad_views"),
+    # Path to edit 
+    path('ciudad_edit', views.ciudad_edit, name="ciudad_edit"),
+    # Delete 
+    path('ciudad_delete/<str:ciudad_id>', views.ciudad_delete, name="ciudad_delete"),
 ]
