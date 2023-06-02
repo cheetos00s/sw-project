@@ -10,6 +10,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
 
+
+
 # Frontend
 def frontend(request):
     return render(request, "App/frontend.html")
