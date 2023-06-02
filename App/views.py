@@ -9,12 +9,17 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
-
+from App.models import Carousel
 
 
 # Frontend
 def frontend(request):
-    return render(request, "App/frontend.html")
+    carousel = Carousel.objects.all()
+    print(carousel)
+    context  = {
+        'carousel' : carousel
+    }
+    return render(request, "App/frontend.html",context)
 
 # Backend
 @login_required(login_url="/login")
@@ -100,8 +105,6 @@ def pais_delete(request, pais_id):
         pais.save()
 
     return HttpResponseRedirect("/pais_list/")
-<<<<<<< HEAD
-=======
 
 #|------------------------------------|
 #               FACULTAD
@@ -325,4 +328,3 @@ def ciudad_delete(request, empresa_id):
         empresa.save()
 
     return HttpResponseRedirect("/empresa_list/")
->>>>>>> 5d99fd1cfa0bb12dfeb40b01acad7fe718e49c94

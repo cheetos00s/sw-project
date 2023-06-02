@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from App import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     # Admin 
@@ -69,4 +71,4 @@ urlpatterns = [
     path('ciudad_edit', views.ciudad_edit, name="ciudad_edit"),
     # Delete 
     path('ciudad_delete/<str:ciudad_id>', views.ciudad_delete, name="ciudad_delete"),
-]
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

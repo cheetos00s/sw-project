@@ -1,5 +1,6 @@
- <!-- Home -->
- <section class="home">
+<!-- Home -->
+{% if user.is_authenticated %} {% else %}
+<section class="home">
   <div class="form_container">
     <i class="uil uil-times form_close"></i>
     <!-- Login From -->
@@ -8,20 +9,39 @@
         <h2>Login</h2>
         {% csrf_token %}
         <div class="input_box">
-          <input type="text" name="username" placeholder="Enter your username" required />
+          <input
+            type="text"
+            name="username"
+            placeholder="Enter your username"
+            required
+          />
           <i class="uil uil-envelope-alt email"></i>
         </div>
         <div class="input_box">
-          <input type="password" name="password" placeholder="Enter your password" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
           <i class="uil uil-lock password"></i>
           <i class="uil uil-eye-slash pw_hide"></i>
         </div>
 
         <button type="submit" class="button">Login Now</button>
-
-        
       </form>
     </div>
-    
   </div>
 </section>
+{% endif %}
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
