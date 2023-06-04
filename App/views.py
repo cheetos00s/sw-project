@@ -462,6 +462,8 @@ def posgrado_edit(request):
     else:
         return render(request, 'App/pregrado_view.html', context)
 
+
+
 # Function to view candidate individually
 def posgrado(request, posgrado_id):
     institucion = Institucion.objects.all()
@@ -489,6 +491,98 @@ def egresado_list(request):
     all_egresado_list = Egresado.objects.filter(status=1).order_by('-created_at')
     return render(request, 'App/egresado_list.html', {"egresados": all_egresado_list, "context":egresado})
 
+# Funtion to insert product
+def egresado_add(request):
+    ciudad = Ciudad.objects.all()
+    pregrado = Pregrado.objects.all()
+    context  = {
+        'ciudad' : ciudad,
+        'pregrado' : pregrado
+    }
+    print(context)
+    if request.method == "POST":
+        if request.POST.get('name') \
+            and request.POST.get('apellido') \
+            and request.POST.get('cedula') \
+            and request.POST.get('numero_carne') \
+            and request.POST.get('genero') \
+            and request.POST.get('direccion') \
+            and request.POST.get('celular') \
+            and request.POST.get('correo_personal') \
+            and request.POST.get('correo_institucional') \
+            and request.POST.get('fecha_nacimiento') \
+            and request.POST.get('promocion') \
+            and request.POST.get('tipo_grado') \
+            and request.POST.get('ciudad_id') \
+            or request.POST.get('pregrado_id'):
+            egresado = Egresado()
+            egresado.name = request.POST.get('name')
+            egresado.apellido = request.POST.get('apellido')
+            egresado.cedula = request.POST.get('cedula')
+            egresado.numero_carne = request.POST.get('numero_carne')
+            egresado.genero = request.POST.get('genero')
+            egresado.direccion = request.POST.get('direccion')
+            egresado.celular = request.POST.get('celular')
+            egresado.correo_personal = request.POST.get('correo_personal')
+            egresado.correo_institucional = request.POST.get('correo_institucional')
+            egresado.fecha_nacimiento = request.POST.get('fecha_nacimiento')
+            egresado.promocion = request.POST.get('promocion')
+            egresado.tipo_grado = request.POST.get('tipo_grado')
+            egresado.ciudad_id = request.POST.get('ciudad_id')
+            egresado.pregrado_id = request.POST.get('pregrado_id')
+            egresado.status = 1  # Set status=1 by default
+            egresado.created_at = timezone.now()  # Set created_at to current timestamp
+            egresado.updated_at = timezone.now()
+            egresado.save()
+            return HttpResponseRedirect("egresado_list/")
+    else:
+        return render(request, 'App/egresado_add.html',context)
+
+def egresado_edit(request):
+    if request.method == "POST":
+        egresado_id = request.POST.get('id')
+        egresado_name = request.POST.get('name')
+        egresado_apellido = request.POST.get('apellido')
+        egresado_cedula = request.POST.get('cedula')
+        egresado_numero_carne = request.POST.get('numero_carne')
+        egresado_genero = request.POST.get('genero')
+        egresado_direccion = request.POST.get('direccion')
+        egresado_celular = request.POST.get('celular')
+        egresado_correo_personal = request.POST.get('correo_personal')
+        egresado_correo_institucional = request.POST.get('correo_institucional')
+        egresado_fecha_nacimiento = request.POST.get('fecha_nacimiento')
+        egresado_promocion = request.POST.get('promocion')
+        egresado_tipo_grado = request.POST.get('tipo_grado')
+        egresado_ciudad_id = request.POST.get('ciudad_id')
+        egresado_pregrado_id = request.POST.get('pregrado_id') 
+        egresado = Egresado.objects.get(id=egresado_id)
+        if egresado != None:
+            egresado.name = egresado_name
+            egresado.apellido = egresado_apellido
+            egresado.cedula = egresado_cedula
+            egresado.numero_carne = egresado_cedula
+            egresado.genero = egresado_genero
+            egresado.direccion = egresado_direccion
+            egresado.celular = egresado_celular
+            egresado.correo_personal = egresado_correo_personal
+            egresado.correo_institucional = egresado_correo_institucional
+            egresado.fecha_nacimiento = egresado_fecha_nacimiento
+            egresado.promocion = egresado_promocion
+            egresado.tipo_grado = egresado_tipo_grado
+            egresado.updated_at = timezone.now()
+            egresado.ciudad_id = egresado_ciudad_id
+            egresado.pregrado_id = egresado_pregrado_id
+            egresado.save()
+            return HttpResponseRedirect("egresado_list/")
+
+# Function to view candidate individually
+def egresado(request, egresado_id):
+    ciudad = Ciudad.objects.all()
+    pregrado = Pregrado.objects.all()
+    egresado = Egresado.objects.get(id = egresado_id)
+    if egresado != None:
+        return render(request, "App/egresado_view.html", {'egresado': egresado, 'ciudad': ciudad, 'pregrado': pregrado})
+
 # Delete Function
 def egresado_delete(request, egresado_id):
     egresado = Egresado.objects.get(id=egresado_id)
@@ -497,4 +591,6 @@ def egresado_delete(request, egresado_id):
         egresado.save()
 
     return HttpResponseRedirect("/egresado_list/")
+
+
 

@@ -85,6 +85,12 @@ urlpatterns = [
 
     # EGRESADO
     path('egresado_list/', views.egresado_list, name="egresado_list"),
+    # Path to add 
+    path('egresado_add',views.egresado_add, name='egresado_add'),
+    # Access data individually
+    path('egresado/<str:egresado_id>', views.egresado, name = "egresado_view"),
+    # Path to edit 
+    path('egresado_edit', views.egresado_edit, name="egresado_edit"),
     # Delete 
     path('egresado_delete/<str:egresado_id>', views.egresado_delete, name="egresado_delete"),
 
@@ -92,5 +98,5 @@ urlpatterns = [
     path('posgrado_list/', views.posgrado_list, name="posgrado_list"),
     # Path to add 
     path('posgrado_add',views.posgrado_add, name='posgrado_add'),
-    
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

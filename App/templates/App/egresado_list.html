@@ -1,17 +1,18 @@
 {% extends 'App/base.html' %}
 
 <!-- Title on the browser tab -->
-{% block title %} City {% endblock title %}
+{% block title %} Graduate {% endblock title %}
 
 {% block content %}
 
 
 <div class="container">
     <br>
+    <a href="{% url 'egresado_add' %}" class="btn-flotante"><i class="fas fa-plus"></i></a>
     <div class="row">
         {% for egresado in egresados %}
         <div class="col-sm">
-            <div class="card text-center" style="width: 28rem;">
+            <div class="card text-center" style="width: 25rem;">
                 <div class="card-header">
                     
                     <h5 style="text-align: center; top:10px;" class="card-title">  
@@ -46,11 +47,12 @@
                 </div>
             </div>
         </div>
-        
+        <br>
         {% endfor %}
     </div>
+    <br>
 </div>
-
+<br>
 
 
 {% endblock content %}

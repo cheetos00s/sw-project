@@ -1,0 +1,125 @@
+{% extends 'App/base.html' %}
+{% load static %}
+<!-- Title on tab -->
+{% block title %} Add Graduate {% endblock title %}
+
+<!-- Page Content -->
+{% block content %}
+<div class="table-container">
+    <section id="container">
+        <header>{% block card-title %}Graduate Registration Form {% endblock card-title %}</header>
+        <form {% block Action %} action="/egresado_add" {% endblock Action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="form">
+        {% csrf_token %}
+
+        <!-- ====== Block Id hidden here ====== -->
+        {% block Value-id %}{% endblock Value-id %}
+        <div class="input-box">
+            <label>Name</label>
+            <input type="text" placeholder="Enter name" name="name" maxlength="40" placeholder="name" required {% block Value-name %}{% endblock Value-name %}  />
+        </div>
+        
+        <div class="input-box">
+            <label>Last Name</label>
+            <input type="text" placeholder="Enter Last Name" name="apellido" maxlength="40" placeholder="Last Name" required {% block Value-apellido %}{% endblock Value-apellido %}  />
+        </div>
+
+        <div class="input-box">
+            <label>License</label>
+            <input type="text" placeholder="Enter License" name="cedula" maxlength="40" placeholder="license" required {% block Value-cedula %}{% endblock Value-cedula %}  />
+        </div>
+
+        <div class="input-box">
+            <label>Id Card:</label>
+            <input type="text" placeholder="Enter Id card" name="numero_carne" maxlength="40" placeholder="Id card" required {% block Value-numero_carne %}{% endblock Value-numero_carne %}  />
+        </div>
+
+        <div class="input-box">
+            <label>Gender</label>
+            <select class="input-box" name="genero" required>
+                {% block Value-genero %}
+                <option value="">Select Gender</option>
+                {% endblock Value-genero %}
+                <option> disabled</option>
+                <option>Male</option>
+                <option>Female</option>                
+            </select>
+        </div>
+
+        <div class="input-box">
+            <label>Address</label>
+            <input type="text" placeholder="Enter Address" name="direccion" maxlength="40" placeholder="Address" required {% block Value-direccion %}{% endblock Value-direccion %}  />
+        </div>
+
+        <div class="input-box">
+            <label>Phone</label>
+            <input type="text" placeholder="Enter Phone" name="celular" maxlength="40" placeholder="Phone number" required {% block Value-celular %}{% endblock Value-celular %}  />
+        </div>
+
+        <div class="input-box">
+            <label>Personal email</label>
+            <input type="text" placeholder="Enter Personal email" name="correo_personal" maxlength="40" placeholder="Perosal email" required {% block Value-correo_personal %}{% endblock Value-correo_personal %}  />
+        </div>
+
+        <div class="input-box">
+            <label>Academy email</label>
+            <input type="text" placeholder="Enter Insitutional email" name="correo_institucional" maxlength="40" placeholder="Academy email" required {% block Value-correo_institucional %}{% endblock Value-correo_institucional %}  />
+        </div>
+
+        <div class="input-box">
+            <label>Date of birth</label>
+            <input type="date" placeholder="" name="fecha_nacimiento" maxlength="40" placeholder="" required {% block Value-fecha_nacimiento %}{% endblock Value-fecha_nacimiento %}  />
+        </div>
+
+        <div class="input-box">
+            <label>Promotion</label>
+            <input type="text" placeholder="Enter Promotion" name="promocion" maxlength="40" placeholder="Promotion" required {% block Value-promocion %}{% endblock Value-promocion %}  />
+        </div>
+
+        <div class="input-box">
+            <label>Grade Type</label>
+            <select class="input-box" name="tipo_grado" required>
+                {% block Value-tipo_grado %}
+                <option value="">Select Grade Type</option>
+                {% endblock Value-tipo_grado %}
+                <option> disabled</option>
+                <option>Ceremony</option>
+                <option>Window</option>                
+            </select>
+        </div>
+        
+
+        {% block Value-ciudad_id %}
+        <div class="input-box">
+            <label>City</label>
+            <select class="input-box" name="ciudad_id" required>
+                <option value="">Select City</option>
+                {% for ciudades in ciudad %}
+                    <option value="{{ ciudades.id }}">{{ ciudades.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endblock Value-ciudad_id %}
+
+        {% block Value-pregrado_id %}
+        <div class="input-box">
+            <label>Undergraduate</label>
+            <select class="input-box" name="pregrado_id" required>
+                <option value="">Select Undergraduate</option>
+                {% for pregrados in pregrado %}
+                    <option value="{{ pregrados.id }}">{{ pregrados.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endblock Value-pregrado_id %}
+
+        <button type="submit" >{% block Btn-action %}&nbsp;&nbsp; Add City {% endblock Btn-action %}</button>
+        <div id="back" > 
+            <a id="back-a" style="background-color: #0b2239;" href="{% url 'egresado_list' %}">Cancel</a>
+        </div>
+
+        </form>
+    </section>
+    
+</div>
+
+{% endblock content %}

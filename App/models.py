@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-GENDER = (
+GENERO = (
     ('Male', 'Male'),
     ('Female', 'Female')
 )
@@ -13,7 +13,7 @@ TIPO_DOC = (
     ('Passport', 'Passport')
 )
 
-GRADE = (
+TIPO_GRADO = (
     ('Ceremony', 'Ceremony'),
     ('Window', 'Window')
 )
@@ -103,7 +103,7 @@ class Egresado(models.Model):
     apellido = models.CharField(max_length=100)
     cedula = models.CharField(max_length=100)
     numero_carne = models.CharField(max_length=100)
-    genero = models.CharField(max_length=50, choices=GENDER)
+    genero = models.CharField(max_length=50, choices=GENERO)
     direccion = models.CharField(max_length=100)
     celular = models.CharField(max_length=100)
     correo_personal = models.CharField(max_length=100)
@@ -113,7 +113,7 @@ class Egresado(models.Model):
     status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    tipo_grado = models.CharField(max_length=50, choices=GRADE)
+    tipo_grado = models.CharField(max_length=50, choices=TIPO_GRADO)
     ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
     pregrado = models.ForeignKey(Pregrado, on_delete=models.CASCADE)
 
