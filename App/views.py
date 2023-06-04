@@ -2,6 +2,8 @@ from django.shortcuts import render
 #
 from App.models import Pais, Facultad, Empresa, Institucion, Ciudad
 from django.utils import timezone
+from django.shortcuts import get_object_or_404
+
 
 # New imports
 from django.http import HttpResponseRedirect
@@ -212,7 +214,7 @@ def institucion_delete(request, institucion_id):
 
 
 #|------------------------------------|
-#             Empresa
+#             EMPRESA
 #|------------------------------------|
 
 # Function to render the page with all produts
@@ -272,7 +274,7 @@ def empresa_delete(request, empresa_id):
     return HttpResponseRedirect("/empresa_list/")
 
 #|------------------------------------|
-#             Ciudad
+#             CIUDAD
 #|------------------------------------|
 
 # Function to render the page with all produts
@@ -302,34 +304,36 @@ def ciudad_add(request):
 
 
 # Function to view candidate individually
-def ciudad(request, empresa_id):
-    empresa = Empresa.objects.get(id = empresa_id)
-    if empresa != None:
-        return render(request, "App/empresa_view.html", {'empresa':empresa})
+def ciudad(request, ciudad_id):
+    ciudad = Ciudad.objects.get(id = ciudad_id)
+    if ciudad != None:
+        return render(request, "App/ciudad_view.html", {'ciudad': ciudad})
 
 
-# Function to Edit product
 def ciudad_edit(request):
+    pais = Pais.objects.all()
+    context  = {
+        'pais' : pais
+    }
     if request.method == "POST":
-        empresa_id = request.POST.get('id')
-        empresa_name = request.POST.get('name')
-        empresa_nit = request.POST.get('nit')
-        empresa_direccion = request.POST.get('direccion')
-        
-        empresa = Empresa.objects.get(id=empresa_id)
-        if empresa != None:
-            empresa.name = empresa_name
-            empresa.nit = empresa_nit
-            empresa.direccion = empresa_direccion
-            empresa.save()
-            return HttpResponseRedirect("/empresa_list/")
+        if request.POST.get('name') and request.POST.get('pais_id'):
+            ciudad = Ciudad()
+            ciudad.name = request.POST.get('name')
+            ciudad.pais_id = request.POST.get('pais_id') 
+            ciudad.status = 1  # Set status=1 by default
+            ciudad.created_at = timezone.now()  # Set created_at to current timestamp
+            ciudad.updated_at = timezone.now()
+            ciudad.save()
+            return HttpResponseRedirect("ciudad_list/")
+    else:
+        return render(request, 'App/ciudad_edit.html',context)
 
 
 # Delete Function
-def ciudad_delete(request, empresa_id):
-    empresa = Empresa.objects.get(id=empresa_id)
-    if empresa:
-        empresa.status = 0
-        empresa.save()
+def ciudad_delete(request, ciudad_id):
+    ciudad = Ciudad.objects.get(id=ciudad_id)
+    if ciudad:
+        ciudad.status = 0
+        ciudad.save()
 
-    return HttpResponseRedirect("/empresa_list/")
+    return HttpResponseRedirect("/ciudad_list/")

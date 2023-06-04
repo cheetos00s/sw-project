@@ -61,14 +61,18 @@ urlpatterns = [
     # Delete 
     path('empresa_delete/<str:empresa_id>', views.empresa_delete, name="empresa_delete"),
 
-    # EMPRESA
+    # CIUDAD
     path('ciudad_list/', views.ciudad_list, name="ciudad_list"),
     # Path to add 
     path('ciudad_add',views.ciudad_add, name='ciudad_add'),
     # Access data individually
-    path('ciudad/<str:ciudad_id>', views.ciudad, name = "ciudad_views"),
+    path('ciudad/<str:ciudad_id>', views.ciudad, name = "ciudad_view"),
     # Path to edit 
     path('ciudad_edit', views.ciudad_edit, name="ciudad_edit"),
     # Delete 
     path('ciudad_delete/<str:ciudad_id>', views.ciudad_delete, name="ciudad_delete"),
+
+    
+
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -18,6 +18,8 @@
             <label>City Name</label>
             <input type="text" placeholder="Enter City name" name="name" maxlength="40" placeholder="City name" required {% block Value-name %}{% endblock Value-name %}  />
         </div>
+        
+        {% block Value-pais_id %}
         <div class="input-box">
             <label>Country</label>
             <select class="input-box" name="pais_id" required>
@@ -27,13 +29,9 @@
                 {% endfor %}
             </select>
         </div>
+        {% endblock Value-pais_id %}
         
         
-        
-        <div class="input-box">
-            <label>City Address</label>
-            <input type="text" placeholder="Enter City address" name="direccion" maxlength="40" placeholder="City address" required {% block Value-direccion %}{% endblock Value-direccion %}  />
-        </div>
         <br>
         <button type="submit" >{% block Btn-action %}&nbsp;&nbsp; Add City {% endblock Btn-action %}</button>
         <button type="text" style="background-color: #0b2239;" ><a style="background-color: #0b2239;" href="{% url 'ciudad_list' %}">Cancel</a></button>

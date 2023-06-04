@@ -1,7 +1,7 @@
 {% extends 'App/base.html' %}
 
 <!-- Title on the browser tab -->
-{% block title %} Company {% endblock title %}
+{% block title %} City {% endblock title %}
 
 {% block content %}
 
@@ -35,13 +35,13 @@
                 <td>{{ ciudad.created_at | date:'m/d/Y (H:i)' }}</td>
                 <td>{{ ciudad.updated_at | date:'m/d/Y (H:i)' }}</td>
                 <td>
-                    <a href="/ciudad/{{ ciudad.id }}" class="btn btn-warning btn-actions" title="Edit Company">
+                    <a href="/ciudad/{{ ciudad.id }}" class="btn btn-warning btn-actions" title="Edit City">
                         <i class="fas fa-pen"></i>
                     </a>
                 </td>
                 <td>
                     <!-- Delete confirmations JS onclick="return confirm('Are you sure want to delete the record?')" incluir dentro de <a> -->
-                    <a href="/ciudad_delete/{{ ciudad.id }}" class="btn btn-secondary btn-actions" title="Delete Company">
+                    <a href="/ciudad_delete/{{ ciudad.id }}" class="btn btn-secondary btn-actions" title="Delete City">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </td>
