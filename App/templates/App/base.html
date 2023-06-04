@@ -46,19 +46,23 @@
             <i id="a" class="fas fa-home"></i>&nbsp;&nbsp;Home</a></li>
           <li class="item">
             <a href="#">
-            <i class="fas fa-user-friends"></i>&nbsp;&nbsp;Graduates</a>
-          </li>
-          <li class="item">
-            <a href="#">
             <i id="a" class="fas fa-user-friends"></i>&nbsp;&nbsp;Graduates</a>
           </li>
           <li class="item has-submenu">
             <a id="a" tabindex="0">Formación académica</a>
             <ul class="submenu">
+              <li class="subitem"><a href="">Formación académica</a></li>
               <li class="subitem"><a href="">Pregrado</a></li>
               <li class="subitem"><a href="{% url 'facultad_list' %}">Facultad</a></li>
               <li class="subitem"><a href="{% url 'institucion_list' %}">Institución</a></li>
               <li class="subitem"><a href="">Posgrado</a></li>
+            </ul>
+          </li>
+          <li class="item has-submenu">
+            <a id="a" tabindex="0">Formación profecional</a>
+            <ul class="submenu">
+              <li class="subitem"><a href="">Historia laboral</a></li>
+              <li class="subitem"><a href="">empresa</a></li>
             </ul>
           </li>
           <li class="item has-submenu">
@@ -67,9 +71,6 @@
               <li class="subitem"><a href="{% url 'ciudad_list' %}">Ciudad</a></li>
               <li class="subitem"><a href="{% url 'pais_list' %}">Pais</a></li>
             </ul>
-          </li>
-          <li class="item"><a href="{% url 'pais_list' %}">Ubicación</a></li>
-          <li class="item"><a href="#">Contact</a>
           </li>
 
           <li class="item button2 secondary"><a href="/logout/" >Logout</a></li>
