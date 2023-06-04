@@ -33,7 +33,10 @@
         
         <br>
         <button type="submit" >{% block Btn-action %}&nbsp;&nbsp; Add City {% endblock Btn-action %}</button>
-        <button type="text" style="background-color: #0b2239;" ><a style="background-color: #0b2239;" href="{% url 'ciudad_list' %}">Cancel</a></button>
+        <div id="back" > 
+            <a id="back-a" style="background-color: #0b2239;" href="{% url 'ciudad_list' %}">Cancel</a>
+        </div>
+        
         
         
         </form>
