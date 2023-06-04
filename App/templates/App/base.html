@@ -40,23 +40,19 @@
       {% block nav %}
         {% if user.is_authenticated %}
         <ul class="menu">
+          <li>----</li>
           <li class="logo"><a href="{% url 'backend' %}">Graduate System</a></li>
 
           <li class="item"><a href="{% url 'backend' %}">
             <i id="a" class="fas fa-home"></i>&nbsp;&nbsp;Home</a></li>
 
           <li class="item">
-<<<<<<< HEAD
             <a href="{% url 'egresado_list' %}">
-=======
-            <a href="#">
->>>>>>> d4ad88be1df5d933381e0838ec99c95156c35a23
             <i id="a" class="fas fa-user-friends"></i>&nbsp;&nbsp;Graduates</a>
           </li>
           <li class="item has-submenu">
             <a id="a" tabindex="0">Academic training</a>
             <ul class="submenu">
-<<<<<<< HEAD
               <li class="subitem"><a href="{% url 'pregrado_list' %}">Undergraduate</a></li>
               <li class="subitem"><a href="{% url 'facultad_list' %}">School</a></li>
               <li class="subitem"><a href="{% url 'institucion_list' %}">Institution</a></li>
@@ -64,31 +60,12 @@
             </ul>
           </li>
           <li class="item has-submenu">
-            <a id="a" tabindex="0">Work</a>
-=======
-              <li class="subitem"><a href="">Formación académica</a></li>
-              <li class="subitem"><a href="">Pregrado</a></li>
-              <li class="subitem"><a href="{% url 'facultad_list' %}">Facultad</a></li>
-              <li class="subitem"><a href="{% url 'institucion_list' %}">Institución</a></li>
-              <li class="subitem"><a href="">Posgrado</a></li>
-            </ul>
-          </li>
-          <li class="item has-submenu">
-            <a id="a" tabindex="0">Formación profecional</a>
-            <ul class="submenu">
-              <li class="subitem"><a href="">Historia laboral</a></li>
-              <li class="subitem"><a href="">empresa</a></li>
-            </ul>
-          </li>
-          <li class="item has-submenu">
-            <a id="a" tabindex="0">Residencia</a>
->>>>>>> d4ad88be1df5d933381e0838ec99c95156c35a23
+            <a id="a" tabindex="0">Work History</a>
             <ul class="submenu">
               <li class="subitem"><a href="{% url 'ciudad_list' %}">Work History</a></li>
-              <li class="subitem"><a href="{% url 'pais_list' %}">Companies</a></li>
+              <li class="subitem"><a href="{% url 'empresa_list' %}">Companies</a></li>
             </ul>
           </li>
-<<<<<<< HEAD
           <li class="item has-submenu">
             <a id="a" tabindex="0">Residence</a>
             <ul class="submenu">
@@ -96,8 +73,6 @@
               <li class="subitem"><a href="{% url 'pais_list' %}">Country</a></li>
             </ul>
           </li>
-=======
->>>>>>> d4ad88be1df5d933381e0838ec99c95156c35a23
 
           <li class="item button2 secondary"><a href="/logout/" >Logout</a></li>
           <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
