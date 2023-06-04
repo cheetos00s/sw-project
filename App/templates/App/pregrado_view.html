@@ -23,10 +23,10 @@
 <!-- Name -->
 {% block Value-name %} value="{{ pregrado.name }}" {% endblock Value-name %}
 <!-- select -->
-{% block Value-pais_id %}
+{% block Value-facultad_id %}
 <div class="input-box">
     <label>School</label>
-    <select class="input-box" name="pais_id" required>
+    <select class="input-box" name="facultad_id" required>
         <option >Select School</option>
         {% for facultades in facultad %}
             {% if facultades.id == pregrado.facultad_id %}
@@ -37,6 +37,6 @@
         {% endfor %}
     </select>
 </div>
-{% endblock Value-pais_id %}
+{% endblock Value-facultad_id %}
 
 

@@ -98,5 +98,11 @@ urlpatterns = [
     path('posgrado_list/', views.posgrado_list, name="posgrado_list"),
     # Path to add 
     path('posgrado_add',views.posgrado_add, name='posgrado_add'),
-
+    
+    path('posgrado/<str:posgrado_id>', views.posgrado, name = "posgrado_view"),
+    # Path to edit 
+    path('posgrado_edit', views.posgrado_edit, name="posgrado_edit"),
+    # Delete 
+    path('posgrado_delete/<str:posgrado_id>', views.posgrado_delete, name="posgrado_delete"),
+    
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -8,7 +8,7 @@
 <div class="table-container">
     <section id="container">
         <header>{% block card-title %}Postgraduate Registration Form {% endblock card-title %}</header>
-        <form {% block Action %} action="/ciudad_add" {% endblock Action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="form">
+        <form {% block Action %} action="/posgrado_add" {% endblock Action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="form">
         {% csrf_token %}
 
         <!-- ====== Block Id hidden here ====== -->
@@ -18,22 +18,24 @@
             <input type="text" placeholder="Enter Postgraduate name" name="name" maxlength="40" placeholder="Postgraduate name" required {% block Value-name %}{% endblock Value-name %}  />
         </div>
         
-        {% block Value-insitucion_id %}
+        {% block Value-institucion_id %}
         <div class="input-box">
             <label>Institution</label>
-            <select class="input-box" name="insitucion_id" required>
+            <select class="input-box" name="institucion_id" required>
                 <option value="">Select Institution</option>
                 {% for instituciones in institucion %}
                     <option value="{{ instituciones.id }}">{{ instituciones.name }}</option>
                 {% endfor %}
             </select>
         </div>
-        {% endblock Value-insitucion_id %}
+        {% endblock Value-institucion_id %}
         
         
         <br>
-        <button type="submit" >{% block Btn-action %}&nbsp;&nbsp; Add City {% endblock Btn-action %}</button>
-        <button type="text" style="background-color: #0b2239;" ><a style="background-color: #0b2239;" href="{% url 'ciudad_list' %}">Cancel</a></button>
+        <button type="submit" >{% block Btn-action %}&nbsp;&nbsp; Add Postgraduate {% endblock Btn-action %}</button>
+        <div id="back" > 
+            <a id="back-a" style="background-color: #0b2239;" href="{% url 'posgrado_list' %}">Cancel</a>
+        </div>
         
         
         </form>

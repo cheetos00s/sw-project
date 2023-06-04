@@ -315,25 +315,16 @@ def ciudad(request, ciudad_id):
 
 
 def ciudad_edit(request):
-    pais = Pais.objects.all()
-    context  = {
-        'pais' : pais
-    }
-    print(context)
     if request.method == "POST":
-        if request.POST.get('name') and request.POST.get('pais_id'):
-            ciudad = Ciudad()
-            ciudad.name = request.POST.get('name')
-            ciudad.pais_id = request.POST.get('pais_id') 
-            ciudad.status = 1  # Set status=1 by default
-            ciudad.created_at = timezone.now()  # Set created_at to current timestamp
-            ciudad.updated_at = timezone.now()
+        ciudad_id = request.POST.get('id')
+        ciudad_name = request.POST.get('name')
+        ciudad_pais_id = request.POST.get('pais_id') 
+        ciudad = Ciudad.objects.get(id=ciudad_id)
+        if ciudad != None:
+            ciudad.name = ciudad_name
+            ciudad.pais_id = ciudad_pais_id
             ciudad.save()
             return HttpResponseRedirect("ciudad_list/")
-    else:
-        return render(request, 'App/ciudad_view.html', context)
-
-
 # Delete Function
 def ciudad_delete(request, ciudad_id):
     ciudad = Ciudad.objects.get(id=ciudad_id)
@@ -385,23 +376,16 @@ def pregrado(request, pregrado_id):
 
 
 def pregrado_edit(request):
-    facultad = Facultad.objects.all()
-    context  = {
-        'facultad' : facultad
-    }
-    print(context)
     if request.method == "POST":
-        if request.POST.get('name') and request.POST.get('facultad_id'):
-            pregrado = Pregrado()
-            pregrado.name = request.POST.get('name')
-            pregrado.facultad_id = request.POST.get('facultad_id') 
-            pregrado.status = 1  # Set status=1 by default
-            pregrado.created_at = timezone.now()  # Set created_at to current timestamp
-            pregrado.updated_at = timezone.now()
+        pregrado_id = request.POST.get('id')
+        pregrado_name = request.POST.get('name')
+        pregrado_facultad_id = request.POST.get('facultad_id') 
+        pregrado = Pregrado.objects.get(id=pregrado_id)
+        if pregrado != None:
+            pregrado.name = pregrado_name
+            pregrado.facultad_id = pregrado_facultad_id
             pregrado.save()
             return HttpResponseRedirect("pregrado_list/")
-    else:
-        return render(request, 'App/pregrado_view.html', context)
 
 
 # Delete Function
@@ -432,7 +416,7 @@ def posgrado_add(request):
     print(context)
     if request.method == "POST":
         if request.POST.get('name') and request.POST.get('institucion_id'):
-            posgrado = posgrado()
+            posgrado = Posgrado()
             posgrado.name = request.POST.get('name')
             posgrado.institucion_id = request.POST.get('institucion_id') 
             posgrado.status = 1  # Set status=1 by default
@@ -444,30 +428,23 @@ def posgrado_add(request):
         return render(request, 'App/posgrado_add.html',context)
 
 def posgrado_edit(request):
-    institucion = Institucion.objects.all()
-    context  = {
-        'institucion' : institucion
-    }
-    print(context)
     if request.method == "POST":
-        if request.POST.get('name') and request.POST.get('institucion_id'):
-            pregrado = Pregrado()
-            pregrado.name = request.POST.get('name')
-            pregrado.institucion_id = request.POST.get('institucion_id') 
-            pregrado.status = 1  # Set status=1 by default
-            pregrado.created_at = timezone.now()  # Set created_at to current timestamp
-            pregrado.updated_at = timezone.now()
-            pregrado.save()
-            return HttpResponseRedirect("pregrado_list/")
-    else:
-        return render(request, 'App/pregrado_view.html', context)
+        posgrado_id = request.POST.get('id')
+        posgrado_name = request.POST.get('name')
+        posgrado_institucion_id = request.POST.get('institucion_id') 
+        posgrado = Posgrado.objects.get(id=posgrado_id)
+        if posgrado != None:
+            posgrado.name = posgrado_name
+            posgrado.institucion_id = posgrado_institucion_id
+            posgrado.save()
+            return HttpResponseRedirect("posgrado_list/")
 
 
 
 # Function to view candidate individually
 def posgrado(request, posgrado_id):
     institucion = Institucion.objects.all()
-    posgrado = posgrado.objects.get(id = posgrado_id)
+    posgrado = Posgrado.objects.get(id = posgrado_id)
     if posgrado != None:
         return render(request, "App/posgrado_view.html", {'posgrado': posgrado, 'institucion':institucion})
 

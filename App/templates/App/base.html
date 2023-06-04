@@ -40,6 +40,7 @@
       {% block nav %}
         {% if user.is_authenticated %}
         <ul class="menu">
+          <li>----</li>
           <li class="logo"><a href="{% url 'backend' %}">Graduate System</a></li>
 
           <li class="item"><a href="{% url 'backend' %}">
@@ -62,7 +63,7 @@
             <a id="a" tabindex="0">Work</a>
             <ul class="submenu">
               <li class="subitem"><a href="{% url 'ciudad_list' %}">Work History</a></li>
-              <li class="subitem"><a href="{% url 'pais_list' %}">Companies</a></li>
+              <li class="subitem"><a href="{% url 'empresa_list' %}">Companies</a></li>
             </ul>
           </li>
           <li class="item has-submenu">
