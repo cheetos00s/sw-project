@@ -34,12 +34,16 @@ endblock Btn-action %}
 <!-- select -->
 {% block Value-pais_id %}
 <div class="input-box">
-  <label>Country</label>
-  <select class="input-box" name="pais_id" required>
-    <option value="">Select Country</option>
-    {% for paises in pais %}
-    <option value="{{ paises.id }}">{{ paises.name }}</option>
-    {% endfor %}
-  </select>
+    <label>Country</label>
+    <select class="input-box" name="pais_id" required>
+        <option >Select Country</option>
+        {% for paises in pais %}
+            {% if paises.id == ciudad.pais_id %}
+                <option value="{{ paises.id }}" selected>{{ paises.name }}</option>
+            {% else %}
+                <option value="{{ paises.id }}">{{ paises.name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
 </div>
 {% endblock Value-pais_id %}

@@ -308,9 +308,10 @@ def ciudad_add(request):
 
 # Function to view candidate individually
 def ciudad(request, ciudad_id):
+    pais = Pais.objects.all()
     ciudad = Ciudad.objects.get(id = ciudad_id)
     if ciudad != None:
-        return render(request, "App/ciudad_view.html", {'ciudad': ciudad})
+        return render(request, "App/ciudad_view.html", {'ciudad': ciudad, 'pais':pais})
 
 
 def ciudad_edit(request):
