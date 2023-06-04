@@ -6,8 +6,7 @@
 <!-- Page Content -->
 {% block content %}
 <div class="table-container">
-    
-    <section class="container">
+    <section id="container">
         <header>{% block card-title %}City Registration Form {% endblock card-title %}</header>
         <form {% block Action %} action="/ciudad_add" {% endblock Action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="form">
         {% csrf_token %}

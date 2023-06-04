@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'egresado_bd',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': '192.168.64.3',
         'PORT': '3306',
     }
 }

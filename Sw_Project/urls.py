@@ -10,7 +10,7 @@ urlpatterns = [
     # Frontend 
     path('', views.frontend, name="frontend"),
     # Backend 
-    path('backend/', views.backend, name="backend"),
+    path('home/', views.backend, name="backend"),
 
     # Login/logout
     path('login/', views.Login, name="login"),

@@ -1,42 +1,45 @@
 {% extends 'App/ciudad_add.html' %}
-
+{% load static %}
 <!-- Title on tab -->
-{% block title %} Edit Country {% endblock title %}
-
-{% block card-title %} <strong> Registered at: </strong> <span> {{ ciudad.created_at | date:'m/d/Y (H:i)' }} </span> {% endblock card-title %}
+{% block title %} Edit Country {% endblock title %} {% block card-title %}
+<strong> uver </strong>
+<span> {{ ciudad.created_at | date:'m/d/Y (H:i)' }} </span> {% endblock
+card-title %}
 
 <!-- Form Action -->
 {% block Action %} action="/ciudad_edit" {% endblock Action %}
 
 <!-- Button Action (content) -->
-{% block Btn-action %} <i class="fas fa-server"></i>&nbsp;&nbsp; Save Changes {% endblock Btn-action %}
+{% block Btn-action %} <i class="fas fa-server"></i>&nbsp;&nbsp; Save Changes {%
+endblock Btn-action %}
 
 <!-- =========== All <inputs> =========== -->
 <!-- Block ID -->
 {% block Value-id %}
 
 <div class="input-group mb-3">
-    <span class="side-label btn border-secondary bg-light"><i class="fas fa-key"></i></span>
-    <input type="text" class="form-control" name="id" value="{{ ciudad.id }}" readonly>
+  <span class="side-label btn"><i class="fas fa-key"></i></span>
+  <input
+    type="text"
+    class="form-control"
+    name="id"
+    value="{{ ciudad.id }}"
+    readonly
+  />
 </div>
 {% endblock Value-id %}
 <!-- Name -->
-{% block Value-name %} value="{{ ciudad.name }}" {% endblock Value-name %}
+{% block Value-name %} value="{{ ciudad.name }}" 
+{% endblock Value-name %}
 <!-- select -->
 {% block Value-pais_id %}
 <div class="input-box">
-    <label>Country</label>
-    <select class="input-box" name="pais_id" required>
-        <option >Select Country</option>
-        {% for paises in pais %}
-            {% if paises.id == ciudad.pais_id %}
-                <option value="{{ paises.id }}" selected>{{ paises.name }}</option>
-            {% else %}
-                <option value="{{ paises.id }}">{{ paises.name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
+  <label>Country</label>
+  <select class="input-box" name="pais_id" required>
+    <option value="">Select Country</option>
+    {% for paises in pais %}
+    <option value="{{ paises.id }}">{{ paises.name }}</option>
+    {% endfor %}
+  </select>
 </div>
 {% endblock Value-pais_id %}
-
-

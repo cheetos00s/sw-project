@@ -45,7 +45,7 @@ def LoginUser(request):
         user = authenticate(username = username, password = password)
         if user != None:
             login(request, user)
-            return HttpResponseRedirect('/backend')
+            return HttpResponseRedirect('/home')
         else:
             messages.error(request, "Enter your data correctly.")
             return HttpResponseRedirect('/')
@@ -279,8 +279,10 @@ def empresa_delete(request, empresa_id):
 
 # Function to render the page with all produts
 def ciudad_list(request):
+    pais = Pais.objects.all()
+    print(pais)
     all_ciudad_list = Ciudad.objects.filter(status=1).order_by('-created_at')
-    return render(request, 'App/ciudad_list.html', {"ciudades": all_ciudad_list})
+    return render(request, 'App/ciudad_list.html', {"ciudades": all_ciudad_list, "context":pais})
 
 # Funtion to insert product
 
@@ -289,6 +291,7 @@ def ciudad_add(request):
     context  = {
         'pais' : pais
     }
+    print(context)
     if request.method == "POST":
         if request.POST.get('name') and request.POST.get('pais_id'):
             ciudad = Ciudad()
@@ -315,6 +318,7 @@ def ciudad_edit(request):
     context  = {
         'pais' : pais
     }
+    print(context)
     if request.method == "POST":
         if request.POST.get('name') and request.POST.get('pais_id'):
             ciudad = Ciudad()
@@ -326,7 +330,7 @@ def ciudad_edit(request):
             ciudad.save()
             return HttpResponseRedirect("ciudad_list/")
     else:
-        return render(request, 'App/ciudad_edit.html',context)
+        return render(request, 'App/ciudad_edit.html', context)
 
 
 # Delete Function

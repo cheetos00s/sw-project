@@ -40,9 +40,9 @@
       {% block nav %}
         {% if user.is_authenticated %}
         <ul class="menu">
-          <li class="logo"><a href="{% url 'pais_list' %}">Graduate System</a></li>
+          <li class="logo"><a href="{% url 'backend' %}">Graduate System</a></li>
 
-          <li class="item"><a href="#">
+          <li class="item"><a href="{% url 'backend' %}">
             <i id="a" class="fas fa-home"></i>&nbsp;&nbsp;Home</a></li>
           <li class="item">
             <a href="#">
@@ -53,20 +53,19 @@
             <i id="a" class="fas fa-user-friends"></i>&nbsp;&nbsp;Graduates</a>
           </li>
           <li class="item has-submenu">
-            <a id="a" tabindex="0">Services</a>
+            <a id="a" tabindex="0">Formación académica</a>
             <ul class="submenu">
-              <li class="subitem"><a href="{% url 'backend' %}">Design</a></li>
-              <li class="subitem"><a href="#">Development</a></li>
-              <li class="subitem"><a href="#">SEO</a></li>
-              <li class="subitem"><a href="#">Copywriting</a></li>
+              <li class="subitem"><a href="">Pregrado</a></li>
+              <li class="subitem"><a href="{% url 'facultad_list' %}">Facultad</a></li>
+              <li class="subitem"><a href="{% url 'institucion_list' %}">Institución</a></li>
+              <li class="subitem"><a href="">Posgrado</a></li>
             </ul>
           </li>
           <li class="item has-submenu">
-            <a id="a" tabindex="0">Plans</a>
+            <a id="a" tabindex="0">Residencia</a>
             <ul class="submenu">
-              <li class="subitem"><a href="#">Freelancer</a></li>
-              <li class="subitem"><a href="#">Startup</a></li>
-              <li class="subitem"><a href="#">Enterprise</a></li>
+              <li class="subitem"><a href="{% url 'ciudad_list' %}">Ciudad</a></li>
+              <li class="subitem"><a href="{% url 'pais_list' %}">Pais</a></li>
             </ul>
           </li>
           <li class="item"><a href="{% url 'pais_list' %}">Ubicación</a></li>
