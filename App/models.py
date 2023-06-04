@@ -6,11 +6,16 @@ GENDER = (
     ('Femenino', 'Femenino')
 )
 
-CAREER = (
+TIPO_DOC = (
     ('Cedula de Ciudadania', 'Cedula de Ciudadania'),
     ('Cedula de Extranjeria', 'Cedula de Extranjeria'),
     ('Tarjeta de Identidad', 'Tarjeta de Identidad'),
     ('Pasaporte', 'Pasaporte')
+)
+
+GRADO = (
+    ('Ceremonia', 'Ceremonia'),
+    ('Ventanilla', 'Ventanilla')
 )
 
 class Carousel(models.Model):
@@ -70,4 +75,68 @@ class Ciudad(models.Model):
 
     def __str__(self):
         return self.name
+
+class Pregrado(models.Model):
+    name = models.CharField(max_length=100)
+    status = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    facultad = models.ForeignKey(Facultad, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+class Posgrado(models.Model):
+    name = models.CharField(max_length=100)
+    status = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    institucion = models.ForeignKey(Institucion, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
     
+class Egresado(models.Model):
+    name = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
+    cedula = models.CharField(max_length=100)
+    numero_carne = models.CharField(max_length=100)
+    genero = models.CharField(max_length=50, choices=GENDER)
+    direccion = models.CharField(max_length=100)
+    celular = models.CharField(max_length=100)
+    correo_personal = models.CharField(max_length=100)
+    correo_institucional = models.CharField(max_length=100)
+    fecha_nacimiento = models.DateField()
+    promocion = models.IntegerField()
+    status = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    tipo_grado = models.CharField(max_length=50, choices=TIPO_DOC)
+    ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
+    pregrado = models.ForeignKey(Pregrado, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+    
+class Academico(models.Model):
+    status = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    posgrado = models.ForeignKey(Posgrado, on_delete=models.CASCADE)
+    egresado = models.ForeignKey(Egresado, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+class Laboral(models.Model):
+    cargo = models.CharField(max_length=100)
+    fecha_inicio = models.DateField()
+    fecha_fin = models.DateField()
+    status = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
+    Egresado = models.ForeignKey(Egresado, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
