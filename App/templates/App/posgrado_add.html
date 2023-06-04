@@ -1,0 +1,44 @@
+{% extends 'App/base.html' %}
+{% load static %}
+<!-- Title on tab -->
+{% block title %} Add Postgraduate {% endblock title %}
+
+<!-- Page Content -->
+{% block content %}
+<div class="table-container">
+    <section id="container">
+        <header>{% block card-title %}Postgraduate Registration Form {% endblock card-title %}</header>
+        <form {% block Action %} action="/ciudad_add" {% endblock Action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="form">
+        {% csrf_token %}
+
+        <!-- ====== Block Id hidden here ====== -->
+        {% block Value-id %}{% endblock Value-id %}
+        <div class="input-box">
+            <label>Postgraduate Name</label>
+            <input type="text" placeholder="Enter Postgraduate name" name="name" maxlength="40" placeholder="Postgraduate name" required {% block Value-name %}{% endblock Value-name %}  />
+        </div>
+        
+        {% block Value-insitucion_id %}
+        <div class="input-box">
+            <label>Institution</label>
+            <select class="input-box" name="insitucion_id" required>
+                <option value="">Select Institution</option>
+                {% for instituciones in institucion %}
+                    <option value="{{ instituciones.id }}">{{ instituciones.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endblock Value-insitucion_id %}
+        
+        
+        <br>
+        <button type="submit" >{% block Btn-action %}&nbsp;&nbsp; Add City {% endblock Btn-action %}</button>
+        <button type="text" style="background-color: #0b2239;" ><a style="background-color: #0b2239;" href="{% url 'ciudad_list' %}">Cancel</a></button>
+        
+        
+        </form>
+    </section>
+    
+</div>
+
+{% endblock content %}

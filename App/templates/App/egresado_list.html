@@ -1,0 +1,56 @@
+{% extends 'App/base.html' %}
+
+<!-- Title on the browser tab -->
+{% block title %} City {% endblock title %}
+
+{% block content %}
+
+
+<div class="container">
+    <br>
+    <div class="row">
+        {% for egresado in egresados %}
+        <div class="col-sm">
+            <div class="card text-center" style="width: 28rem;">
+                <div class="card-header">
+                    
+                    <h5 style="text-align: center; top:10px;" class="card-title">  
+                    <span></span>{{ egresado.name }} {{ egresado.apellido }}</h5>
+                  </div>
+                <div class="card-body">
+                    <i class="fa fa-user" aria-hidden="true"></i>                    
+                    <p style="text-align: center; top:10px;" ></p>
+                    <p><b> License:  </b><span class="card-text"> {{ egresado.cedula }}</span></p>
+                    <p><b> Id Card:  </b><span class="card-text"> {{ egresado.numero_carne }}</span></p>    
+                    <p><b> Gender:  </b><span class="card-text"> {{ egresado.genero }}</span></p>
+                    <p><b> Address:  </b><span class="card-text"> {{ egresado.direccion }}</span></p>
+                    <p><b> Phone:  </b><span class="card-text"> {{ egresado.celular }}</span></p>
+                    <p><b> Personal email:  </b><span class="card-text"> {{ egresado.correo_personal }}</span></p>
+                    <p><b> Academy email:  </b><span class="card-text"> {{ egresado.correo_institucional }}</span></p>
+                    <p><b> Date of birth:  </b><span class="card-text"> {{ egresado.fecha_nacimiento }}</span></p>
+                    <p><b> Promotion:  </b><span class="card-text"> {{ egresado.promocion }}</span></p>
+                    <p><b> grade type:  </b><span class="card-text"> {{ egresado.tipo_grado }}</span></p>
+                    <p><b> City:  </b><span class="card-text"> {{ egresado.ciudad.name }}</span></p>
+                    <p><b> undergraduate:  </b><span class="card-text"> {{ egresado.pregrado.name }}</span></p>
+                    <hr>            
+                    <a href="/egresado/{{ egresado.id }}" class="btn btn-warning btn-actions" title="Edit">
+                        <i class="fas fa-pen"></i>
+                    </a>
+                    <a href="/egresado_delete/{{ egresado.id }}" class="btn btn-secondary btn-actions" title="Delete">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>        
+                </div>               
+                <div class="card-footer text-muted">
+                    <p><b> Created at:  </b><span class="card-text"> {{ egresado.created_at }}</span></p>
+                    
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock content %}

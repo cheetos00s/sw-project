@@ -72,7 +72,25 @@ urlpatterns = [
     # Delete 
     path('ciudad_delete/<str:ciudad_id>', views.ciudad_delete, name="ciudad_delete"),
 
+    # PREGRADO
+    path('pregrado_list/', views.pregrado_list, name="pregrado_list"),
+    # Path to add 
+    path('pregrado_add',views.pregrado_add, name='pregrado_add'),
+    # Access data individually
+    path('pregrado/<str:pregrado_id>', views.pregrado, name = "pregrado_view"),
+    # Path to edit 
+    path('pregrado_edit', views.pregrado_edit, name="pregrado_edit"),
+    # Delete 
+    path('pregrado_delete/<str:pregrado_id>', views.pregrado_delete, name="pregrado_delete"),
+
+    # EGRESADO
+    path('egresado_list/', views.egresado_list, name="egresado_list"),
+    # Delete 
+    path('egresado_delete/<str:egresado_id>', views.egresado_delete, name="egresado_delete"),
+
+    # POSGRADO
+    path('posgrado_list/', views.posgrado_list, name="posgrado_list"),
+    # Path to add 
+    path('posgrado_add',views.posgrado_add, name='posgrado_add'),
     
-
-
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -44,32 +44,33 @@
 
           <li class="item"><a href="{% url 'backend' %}">
             <i id="a" class="fas fa-home"></i>&nbsp;&nbsp;Home</a></li>
+
           <li class="item">
-            <a href="#">
-            <i class="fas fa-user-friends"></i>&nbsp;&nbsp;Graduates</a>
-          </li>
-          <li class="item">
-            <a href="#">
+            <a href="{% url 'egresado_list' %}">
             <i id="a" class="fas fa-user-friends"></i>&nbsp;&nbsp;Graduates</a>
           </li>
           <li class="item has-submenu">
-            <a id="a" tabindex="0">Formación académica</a>
+            <a id="a" tabindex="0">Academic training</a>
             <ul class="submenu">
-              <li class="subitem"><a href="">Pregrado</a></li>
-              <li class="subitem"><a href="{% url 'facultad_list' %}">Facultad</a></li>
-              <li class="subitem"><a href="{% url 'institucion_list' %}">Institución</a></li>
-              <li class="subitem"><a href="">Posgrado</a></li>
+              <li class="subitem"><a href="{% url 'pregrado_list' %}">Undergraduate</a></li>
+              <li class="subitem"><a href="{% url 'facultad_list' %}">School</a></li>
+              <li class="subitem"><a href="{% url 'institucion_list' %}">Institution</a></li>
+              <li class="subitem"><a href="{% url 'posgrado_list' %}">Postgraduate</a></li>
             </ul>
           </li>
           <li class="item has-submenu">
-            <a id="a" tabindex="0">Residencia</a>
+            <a id="a" tabindex="0">Work</a>
             <ul class="submenu">
-              <li class="subitem"><a href="{% url 'ciudad_list' %}">Ciudad</a></li>
-              <li class="subitem"><a href="{% url 'pais_list' %}">Pais</a></li>
+              <li class="subitem"><a href="{% url 'ciudad_list' %}">Work History</a></li>
+              <li class="subitem"><a href="{% url 'pais_list' %}">Companies</a></li>
             </ul>
           </li>
-          <li class="item"><a href="{% url 'pais_list' %}">Ubicación</a></li>
-          <li class="item"><a href="#">Contact</a>
+          <li class="item has-submenu">
+            <a id="a" tabindex="0">Residence</a>
+            <ul class="submenu">
+              <li class="subitem"><a href="{% url 'ciudad_list' %}">City</a></li>
+              <li class="subitem"><a href="{% url 'pais_list' %}">Country</a></li>
+            </ul>
           </li>
 
           <li class="item button2 secondary"><a href="/logout/" >Logout</a></li>

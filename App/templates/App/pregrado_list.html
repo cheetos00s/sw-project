@@ -1,0 +1,57 @@
+{% extends 'App/base.html' %}
+
+<!-- Title on the browser tab -->
+{% block title %} Undergraduate {% endblock title %}
+
+{% block content %}
+
+<div class="table-container-view">
+    <div class="post">   
+        <h1><a >Undergraduate</a></h1>
+    </div>
+    <table>
+        <thead>
+            <tr>
+            <th><a href="{% url 'pregrado_add' %}" class="add_list"><i class="fas fa-plus"></i></a></th>
+            <th style="width: 2%;">#</th>
+            <th style="width: 25%;">Name</th>
+            <th style="width: 10%;">School</th>
+            <th style="width: 21%;">Created at</th>
+            <th style="width: 22%;">Updated at</th>
+            <th colspan="2" style="width: 10%;">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+            <!-- Dados vindos do BD -->
+            {% for pregrado in pregrados %}
+            <tr>
+                <!-- (Opcional)
+                <td data-label="Id" id="table-top">{{ product.id }}</td>
+                -->
+                <td></td>
+                <td>{{ pregrado.id }}</td>
+                <td>{{ pregrado.name }}</td>
+                <td>{{ pregrado.facultad.name }}</td>
+                <td>{{ pregrado.created_at | date:'m/d/Y (H:i)' }}</td>
+                <td>{{ pregrado.updated_at | date:'m/d/Y (H:i)' }}</td>
+                <td>
+                    <a href="/pregrado/{{ pregrado.id }}" class="btn btn-warning btn-actions" title="Edit City">
+                        <i class="fas fa-pen"></i>
+                    </a>
+                </td>
+                <td>
+                    <!-- Delete confirmations JS onclick="return confirm('Are you sure want to delete the record?')" incluir dentro de <a> -->
+                    <a href="/pregrado_delete/{{ pregrado.id }}" class="btn btn-secondary btn-actions" title="Delete City">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

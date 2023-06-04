@@ -1,6 +1,6 @@
 from django.shortcuts import render
 #
-from App.models import Pais, Facultad, Empresa, Institucion, Ciudad
+from App.models import *
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 
@@ -331,7 +331,7 @@ def ciudad_edit(request):
             ciudad.save()
             return HttpResponseRedirect("ciudad_list/")
     else:
-        return render(request, 'App/ciudad_edit.html', context)
+        return render(request, 'App/ciudad_view.html', context)
 
 
 # Delete Function
@@ -342,3 +342,159 @@ def ciudad_delete(request, ciudad_id):
         ciudad.save()
 
     return HttpResponseRedirect("/ciudad_list/")
+
+#|------------------------------------|
+#             PREGRADO
+#|------------------------------------|
+
+# Function to render the page with all produts
+def pregrado_list(request):
+    pregrado = Pregrado.objects.all()
+    print(pregrado)
+    all_pregrado_list = Pregrado.objects.filter(status=1).order_by('-created_at')
+    return render(request, 'App/pregrado_list.html', {"pregrados": all_pregrado_list, "context":pregrado})
+
+# Funtion to insert product
+
+def pregrado_add(request):
+    facultad = Facultad.objects.all()
+    context  = {
+        'facultad' : facultad
+    }
+    print(context)
+    if request.method == "POST":
+        if request.POST.get('name') and request.POST.get('facultad_id'):
+            pregrado = Pregrado()
+            pregrado.name = request.POST.get('name')
+            pregrado.facultad_id = request.POST.get('facultad_id') 
+            pregrado.status = 1  # Set status=1 by default
+            pregrado.created_at = timezone.now()  # Set created_at to current timestamp
+            pregrado.updated_at = timezone.now()
+            pregrado.save()
+            return HttpResponseRedirect("pregrado_list/")
+    else:
+        return render(request, 'App/pregrado_add.html',context)
+
+
+# Function to view candidate individually
+def pregrado(request, pregrado_id):
+    facultad = Facultad.objects.all()
+    pregrado = Pregrado.objects.get(id = pregrado_id)
+    if pregrado != None:
+        return render(request, "App/pregrado_view.html", {'pregrado': pregrado, 'facultad':facultad})
+
+
+def pregrado_edit(request):
+    facultad = Facultad.objects.all()
+    context  = {
+        'facultad' : facultad
+    }
+    print(context)
+    if request.method == "POST":
+        if request.POST.get('name') and request.POST.get('facultad_id'):
+            pregrado = Pregrado()
+            pregrado.name = request.POST.get('name')
+            pregrado.facultad_id = request.POST.get('facultad_id') 
+            pregrado.status = 1  # Set status=1 by default
+            pregrado.created_at = timezone.now()  # Set created_at to current timestamp
+            pregrado.updated_at = timezone.now()
+            pregrado.save()
+            return HttpResponseRedirect("pregrado_list/")
+    else:
+        return render(request, 'App/pregrado_view.html', context)
+
+
+# Delete Function
+def pregrado_delete(request, pregrado_id):
+    pregrado = Pregrado.objects.get(id=pregrado_id)
+    if pregrado:
+        pregrado.status = 0
+        pregrado.save()
+
+    return HttpResponseRedirect("/pregrado_list/")
+
+#|------------------------------------|
+#             POSGRADO
+#|------------------------------------|
+
+# Function to render the page with all produts
+def posgrado_list(request):
+    posgrado = Posgrado.objects.all()
+    print(posgrado)
+    all_posgrado_list = Posgrado.objects.filter(status=1).order_by('-created_at')
+    return render(request, 'App/posgrado_list.html', {"posgrados": all_posgrado_list, "context":posgrado})
+
+def posgrado_add(request):
+    institucion = Institucion.objects.all()
+    context  = {
+        'institucion' : institucion
+    }
+    print(context)
+    if request.method == "POST":
+        if request.POST.get('name') and request.POST.get('institucion_id'):
+            posgrado = posgrado()
+            posgrado.name = request.POST.get('name')
+            posgrado.institucion_id = request.POST.get('institucion_id') 
+            posgrado.status = 1  # Set status=1 by default
+            posgrado.created_at = timezone.now()  # Set created_at to current timestamp
+            posgrado.updated_at = timezone.now()
+            posgrado.save()
+            return HttpResponseRedirect("posgrado_list/")
+    else:
+        return render(request, 'App/posgrado_add.html',context)
+
+def posgrado_edit(request):
+    institucion = Institucion.objects.all()
+    context  = {
+        'institucion' : institucion
+    }
+    print(context)
+    if request.method == "POST":
+        if request.POST.get('name') and request.POST.get('institucion_id'):
+            pregrado = Pregrado()
+            pregrado.name = request.POST.get('name')
+            pregrado.institucion_id = request.POST.get('institucion_id') 
+            pregrado.status = 1  # Set status=1 by default
+            pregrado.created_at = timezone.now()  # Set created_at to current timestamp
+            pregrado.updated_at = timezone.now()
+            pregrado.save()
+            return HttpResponseRedirect("pregrado_list/")
+    else:
+        return render(request, 'App/pregrado_view.html', context)
+
+# Function to view candidate individually
+def posgrado(request, posgrado_id):
+    institucion = Institucion.objects.all()
+    posgrado = posgrado.objects.get(id = posgrado_id)
+    if posgrado != None:
+        return render(request, "App/posgrado_view.html", {'posgrado': posgrado, 'institucion':institucion})
+
+# Delete Function
+def posgrado_delete(request, posgrado_id):
+    posgrado = Posgrado.objects.get(id=posgrado_id)
+    if posgrado:
+        posgrado.status = 0
+        posgrado.save()
+
+    return HttpResponseRedirect("/posgrado_list/")
+
+#|------------------------------------|
+#             EGRESADO
+#|------------------------------------|
+
+# Function to render the page with all produts
+def egresado_list(request):
+    egresado = Egresado.objects.all()
+    print(egresado)
+    all_egresado_list = Egresado.objects.filter(status=1).order_by('-created_at')
+    return render(request, 'App/egresado_list.html', {"egresados": all_egresado_list, "context":egresado})
+
+# Delete Function
+def egresado_delete(request, egresado_id):
+    egresado = Egresado.objects.get(id=egresado_id)
+    if egresado:
+        egresado.status = 0
+        egresado.save()
+
+    return HttpResponseRedirect("/egresado_list/")
+

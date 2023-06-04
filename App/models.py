@@ -2,21 +2,23 @@ from django.db import models
 
 # Create your models here.
 GENDER = (
-    ('Masculino', 'Masculino'),
-    ('Femenino', 'Femenino')
+    ('Male', 'Male'),
+    ('Female', 'Female')
 )
 
 TIPO_DOC = (
-    ('Cedula de Ciudadania', 'Cedula de Ciudadania'),
-    ('Cedula de Extranjeria', 'Cedula de Extranjeria'),
-    ('Tarjeta de Identidad', 'Tarjeta de Identidad'),
-    ('Pasaporte', 'Pasaporte')
+    ('Citizenship ID', 'Citizenship ID'),
+    ('Foreigner ID', 'Foreigner ID'),
+    ('Identity Card', 'Identity Card'),
+    ('Passport', 'Passport')
 )
 
-GRADO = (
-    ('Ceremonia', 'Ceremonia'),
-    ('Ventanilla', 'Ventanilla')
+GRADE = (
+    ('Ceremony', 'Ceremony'),
+    ('Window', 'Window')
 )
+
+
 
 class Carousel(models.Model):
     image       = models.ImageField(upload_to="pics/%y/%m/%d/")
@@ -111,7 +113,7 @@ class Egresado(models.Model):
     status = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    tipo_grado = models.CharField(max_length=50, choices=TIPO_DOC)
+    tipo_grado = models.CharField(max_length=50, choices=GRADE)
     ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
     pregrado = models.ForeignKey(Pregrado, on_delete=models.CASCADE)
 

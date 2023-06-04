@@ -1032,7 +1032,6 @@ section-heading {
 
 }
 
-.page-section {}
 
 .section-heading {
   text-transform: uppercase;
@@ -1060,3 +1059,5 @@ section-heading {
     row-gap: 15px;
   }
 }
+
+/**/
