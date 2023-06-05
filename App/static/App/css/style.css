@@ -30,7 +30,9 @@ a {
   color: white;
   text-decoration: none;
 }
-
+#p{
+  text-align: justify;
+}
 .menu {
   z-index: 9999999999;
   list-style-type: none;
@@ -101,42 +103,6 @@ a {
 .button.secondary {
   /* divider between buttons and menu links */
   border-bottom: 1px #444 solid;
-}
-
-/* Submenu up from mobile screens */
-.submenu {
-  display: none;
-}
-
-.submenu-active .submenu {
-  display: block;
-  cursor: pointer;
-}
-
-.has-submenu i {
-  font-size: 12px;
-}
-
-.has-submenu>a::after {
-  font-family: "Font Awesome 5 Free";
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 900;
-  content: "\f078";
-  color: white;
-  padding-left: 5px;
-  cursor: pointer;
-}
-
-.subitem a {
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-.submenu-active {
-  background-color: #0080ff;
-  border: 1px royalblue solid;
-  border-radius: 1px;
 }
 
 .post {
@@ -328,18 +294,6 @@ a {
   transform: scale(0.98);
 }
 
-/* Home */
-.home {
-  position: fixed;
-  height: 92.9vh;
-  width: 100%;
-  background-image: url("bg.jpg");
-  background-size: cover;
-  background-position: center;
-  bottom: 0px;
-
-}
-
 .carousel-inner img {
   width: 100%;
   height: 200px;
@@ -354,22 +308,6 @@ a {
   top: 0px;
 }
 
-.home::before {
-  content: "";
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 100;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.5s ease-out;
-}
-
-.home.show::before {
-  opacity: 1;
-  pointer-events: auto;
-}
 
 /* From */
 /*Carosuel*/
@@ -649,15 +587,7 @@ select {
   padding: 0 15px;
 }
 
-.table-container {
-  display: flex;
-  justify-content: center;
-  margin: 5vh auto;
-  width: 90%;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 5px;
-}
+
 .table-container-view{
   display: flex;
   justify-content: center;
@@ -671,7 +601,6 @@ select {
 
 table {
   width: 100%;
-
   border-collapse: collapse;
 }
 
@@ -916,27 +845,8 @@ th {
   margin-top: 15px;
 }
 
-.select-box select {
-  height: 100%;
-  width: 100%;
-  outline: none;
-  border: none;
-  color: #707070;
-  font-size: 1rem;
-}
 
-.form button {
-  height: 55px;
-  width: 100%;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 400;
-  margin-top: 20px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  background: rgb(130, 106, 251);
-}
+
 
 .form #back {
   height: 35px;
@@ -1053,7 +963,6 @@ section-heading {
 
 }
 
-
 .section-heading {
   text-transform: uppercase;
 }
@@ -1079,35 +988,4 @@ section-heading {
   .form :where(.gender-option, .gender) {
     row-gap: 15px;
   }
-}
-
-/**/
-.btn-flotante {
-	font-size: 16px; /* Cambiar el tamaño de la tipografia */
-	text-transform: uppercase; /* Texto en mayusculas */
-	font-weight: bold; /* Fuente en negrita o bold */
-	color: #ffffff; /* Color del texto */
-	border-radius: 5px; /* Borde del boton */
-	letter-spacing: 2px; /* Espacio entre letras */
-	background-color: #0b2239; /* Color de fondo */
-	padding: 18px 30px; /* Relleno del boton */
-	position: fixed;
-	bottom: 40px;
-	right: 40px;
-	transition: all 300ms ease 0ms;
-	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-	z-index: 99;
-}
-.btn-flotante:hover {
-	background-color: #2c2fa5; /* Color de fondo al pasar el cursor */
-	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
-	transform: translateY(-7px);
-}
-@media only screen and (max-width: 600px) {
- 	.btn-flotante {
-		font-size: 14px;
-		padding: 12px 20px;
-		bottom: 20px;
-		right: 20px;
-	}
 }

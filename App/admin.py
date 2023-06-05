@@ -1,5 +1,5 @@
 from django.contrib import admin
-from App.models import Pais, Ciudad
+from App.models import Pais
 from App.models import Carousel
 
 # Register your models here.
