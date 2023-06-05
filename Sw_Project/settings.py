@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'App',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -79,10 +80,10 @@ WSGI_APPLICATION = 'Sw_Project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'egresado_bd',
+        'NAME': 'library',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '192.168.64.3',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }

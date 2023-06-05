@@ -1,14 +1,23 @@
 from django.contrib import admin
-from App.models import Pais, Ciudad
-from App.models import Carousel
+from import_export.admin import ImportExportModelAdmin
+from .models import Autor, Editorial, Libreria, Libro, Libreria_libro
 
-# Register your models here.
-admin.site.register(Carousel)
+@admin.register(Libreria)
+class LibreriaAdmin(ImportExportModelAdmin):
+    list_display = ('nombre', 'direccion', 'telefono')
 
-class PaisAdmin(admin.ModelAdmin):
-    list_display = ['name', 'status', 'created_at', 'updated_at']
-    search_fields = ['name', 'status', 'created_at']
-    list_per_page = 8
+@admin.register(Editorial)
+class EditorialAdmin(ImportExportModelAdmin):
+    list_display = ('nombre', 'direccion', 'ciudad', 'telefono', 'correo')
 
-admin.site.register(Pais, PaisAdmin)
+@admin.register(Autor)
+class AutorAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'apellido', 'direccion', 'telefono', 'fecha_nacimiento')
 
+@admin.register(Libro)
+class LibroAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'año_publicacion', 'precio', 'autor_id', 'editorial_id')
+
+@admin.register(Libreria_libro)
+class LibreriaLibroAdmin(admin.ModelAdmin):
+    list_display = ('libro_id', 'libreria_id', 'cantidad')

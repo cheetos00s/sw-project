@@ -3,24 +3,6 @@ from django.conf import settings
 from django import forms
 from datetime import datetime
 # Create your models here.
-GENERO = (
-    ('Male', 'Male'),
-    ('Female', 'Female')
-)
-
-TIPO_DOC = (
-    ('Citizenship ID', 'Citizenship ID'),
-    ('Foreigner ID', 'Foreigner ID'),
-    ('Identity Card', 'Identity Card'),
-    ('Passport', 'Passport')
-)
-
-TIPO_GRADO = (
-    ('Ceremony', 'Ceremony'),
-    ('Window', 'Window')
-)
-
-
 
 class Carousel(models.Model):
     image       = models.ImageField(upload_to="pics/%y/%m/%d/")
@@ -32,117 +14,48 @@ class Carousel(models.Model):
     def __str__(self):
         return self.title
 
-class Pais(models.Model):
-    name = models.CharField(max_length=100)
-    status = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
-
-class Facultad(models.Model):
-    name = models.CharField(max_length=100)
-    status = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
-    
-class Empresa(models.Model):
-    name = models.CharField(max_length=100)
-    nit = models.CharField(max_length=100)
-    direccion = models.CharField(max_length=100)
-    status = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
-    
-class Institucion(models.Model):
-    name = models.CharField(max_length=100)
-    status = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
-
-class Ciudad(models.Model):
-    name = models.CharField(max_length=100)
-    status = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-class Pregrado(models.Model):
-    name = models.CharField(max_length=100)
-    status = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    facultad = models.ForeignKey(Facultad, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-class Posgrado(models.Model):
-    name = models.CharField(max_length=100)
-    status = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    institucion = models.ForeignKey(Institucion, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-    
-class Egresado(models.Model,forms.DateField):
-    name = models.CharField(max_length=100)
+class Autor(models.Model):
+    nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    cedula = models.CharField(max_length=100)
-    numero_carne = models.CharField(max_length=100)
-    genero = models.CharField(max_length=50, choices=GENERO)
     direccion = models.CharField(max_length=100)
-    celular = models.CharField(max_length=100)
-    correo_personal = models.CharField(max_length=100)
-    correo_institucional = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=100)
     fecha_nacimiento = models.DateField()
-    promocion = models.IntegerField()
-    status = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    tipo_grado = models.CharField(max_length=50, choices=TIPO_GRADO)
-    ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
-    pregrado = models.ForeignKey(Pregrado, on_delete=models.CASCADE)
-    def clean(self):
-        self.fecha_nacimiento = datetime.strptime(self.fecha_nacimiento, '%Y-%m-%d').date()
-
-    def __str__(self):
-        return self.name
     
-class Academico(models.Model):
-    status = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    posgrado = models.ForeignKey(Posgrado, on_delete=models.CASCADE)
-    egresado = models.ForeignKey(Egresado, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.nombre
+
+class Editorial(models.Model):
+    nombre = models.CharField(max_length=100)
+    direccion = models.CharField(max_length=100)
+    ciudad = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=100)
+    correo = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.status
-
-class Laboral(models.Model):
-    cargo = models.CharField(max_length=100)
-    fecha_inicio = models.DateField()
-    fecha_fin = models.DateField()
-    status = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
-    Egresado = models.ForeignKey(Egresado, on_delete=models.CASCADE)
+        return self.nombre
+    
+class Libreria(models.Model):
+    nombre = models.CharField(max_length=100)
+    direccion = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.cargo
+        return self.nombre
+    
+class Libro(models.Model):
+    titulo = models.CharField(max_length=100)
+    año_publicacion = models.DateField()
+    precio = models.IntegerField()
+    autor_id = models.ForeignKey(Autor, on_delete=models.CASCADE)
+    editorial_id = models.ForeignKey(Editorial, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo
+
+class Libreria_libro(models.Model):
+    libro_id = models.ForeignKey(Libro, on_delete=models.CASCADE)
+    libreria_id = models.ForeignKey(Libreria, on_delete=models.CASCADE)
+    cantidad = models.IntegerField()
+
+    def __str__(self):
+        return self.libro_id

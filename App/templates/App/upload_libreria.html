@@ -1,0 +1,27 @@
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            <p {% if message.tags %} class="" {% endif %}>{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Please Upload Libreria file</label>
+    <input type="file" name="myfile">
+    <br><br>
+    <label>Please Upload Editorial file</label>
+    <input type="file" name="myfile2">
+    <br><br>
+    <label>Please Upload Autor file</label>
+    <input type="file" name="myfile3">
+    <br><br>
+    <label>Please Upload libro file</label>
+    <input type="file" name="myfile4">
+    <button type="submit">Upload</button>
+    <h2>Please Upload!</h2>
+</form>
+
+
+
