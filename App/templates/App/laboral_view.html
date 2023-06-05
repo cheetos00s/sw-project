@@ -1,0 +1,65 @@
+{% extends 'App/laboral_add.html' %}
+
+<!-- Title on tab -->
+{% block title %} Edit Word History{% endblock title %}
+
+{% block card-title %} <strong> Registered at: </strong> <span> {{ laboral.created_at | date:'m/d/Y (H:i)' }} </span> {% endblock card-title %}
+
+<!-- Form Action -->
+{% block Action %} action="/laboral_edit" {% endblock Action %}
+
+<!-- Button Action (content) -->
+{% block Btn-action %} <i class="fas fa-server"></i>&nbsp;&nbsp; Save Changes {% endblock Btn-action %}
+
+<!-- =========== All <inputs> =========== -->
+<!-- Block ID -->
+{% block Value-id %}
+
+<div class="input-group mb-3">
+    <span class="side-label btn"><i class="fas fa-key"></i></span>
+    <input type="text" class="form-control" name="id" value="{{ laboral.id }}" readonly>
+</div>
+{% endblock Value-id %}
+
+{% block Value-egresado_id %}
+<div class="input-box">
+    <label>Gradutate</label>
+    <select class="input-box" name="egresado_id" required>
+        <option >Select Gradutate</option>
+        {% for egresados in egresado %}
+            {% if egresados.id == laboral.Egresado_id %}
+                <option value="{{ egresados.id }}" selected>{{ egresados.name }}</option>
+            {% else %}
+                <option value="{{ egresados.id }}">{{ egresados.name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>
+{% endblock Value-egresado_id %}
+<!-- cargo -->
+{% block Value-cargo %} value="{{ laboral.cargo }}" {% endblock Value-cargo %} 
+
+<!-- fecha_inicio-->
+{% block Value-fecha_inicio %} value="{{ laboral.fecha_inicio|date:"Y-m-d" }}" {% endblock Value-fecha_inicio %}
+<!-- fecha_final-->
+{% block Value-fecha_fin %} value="{{ laboral.fecha_fin|date:"Y-m-d" }}" {% endblock Value-fecha_fin %}
+
+
+<!-- select -->
+{% block Value-empresa_id %}
+<div class="input-box">
+    <label>Company</label>
+    <select class="input-box" name="empresa_id" required>
+        <option >Select Company</option>
+        {% for empresas in empresa %}
+            {% if empresas.id == laboral.empresa_id %}
+                <option value="{{ empresas.id }}" selected>{{ empresas.name }}</option>
+            {% else %}
+                <option value="{{ empresas.id }}">{{ empresas.name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>
+{% endblock Value-empresa_id %}
+
+

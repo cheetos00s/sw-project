@@ -1,5 +1,7 @@
 from django.db import models
-
+from django.conf import settings
+from django import forms
+from datetime import datetime
 # Create your models here.
 GENERO = (
     ('Male', 'Male'),
@@ -98,7 +100,7 @@ class Posgrado(models.Model):
     def __str__(self):
         return self.name
     
-class Egresado(models.Model):
+class Egresado(models.Model,forms.DateField):
     name = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     cedula = models.CharField(max_length=100)
@@ -116,6 +118,8 @@ class Egresado(models.Model):
     tipo_grado = models.CharField(max_length=50, choices=TIPO_GRADO)
     ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
     pregrado = models.ForeignKey(Pregrado, on_delete=models.CASCADE)
+    def clean(self):
+        self.fecha_nacimiento = datetime.strptime(self.fecha_nacimiento, '%Y-%m-%d').date()
 
     def __str__(self):
         return self.name
@@ -128,7 +132,7 @@ class Academico(models.Model):
     egresado = models.ForeignKey(Egresado, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.status
 
 class Laboral(models.Model):
     cargo = models.CharField(max_length=100)
@@ -141,4 +145,4 @@ class Laboral(models.Model):
     Egresado = models.ForeignKey(Egresado, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.cargo

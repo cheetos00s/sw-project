@@ -41,7 +41,7 @@
 <!-- correo_institucional -->
 {% block Value-correo_institucional %} value="{{ egresado.correo_institucional }}" {% endblock Value-correo_institucional %}
 <!-- fecha_nacimiento -->
-{% block Value-fecha_nacimiento %} value="{{ egresado.fecha_nacimiento }}" {% endblock Value-fecha_nacimiento %}
+{% block Value-fecha_nacimiento %} value="{{ egresado.fecha_nacimiento|date:"Y-m-d" }}" {% endblock Value-fecha_nacimiento %}
 <!-- promocion -->
 {% block Value-promocion %} value="{{ egresado.promocion }}" {% endblock Value-promocion %}
 <!-- tipo_grado -->
@@ -56,7 +56,7 @@
     <select class="input-box" name="ciudad_id" required>
         <option >Select City</option>
         {% for ciudades in ciudad %}
-            {% if ciudades.id == ciudad.ciudad_id %}
+            {% if ciudades.id == egresado.ciudad_id %}
                 <option value="{{ ciudades.id }}" selected>{{ ciudades.name }}</option>
             {% else %}
                 <option value="{{ ciudades.id }}">{{ ciudades.name }}</option>
@@ -72,7 +72,7 @@
     <select class="input-box" name="pregrado_id" required>
         <option >Select Undergraduate</option>
         {% for pregrados in pregrado %}
-            {% if pregrados.id == posgrado.pregrado_id %}
+            {% if pregrados.id == egresado.pregrado_id %}
                 <option value="{{ pregrados.id }}" selected>{{ pregrados.name }}</option>
             {% else %}
                 <option value="{{ pregrados.id }}">{{ pregrados.name }}</option>

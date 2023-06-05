@@ -4,14 +4,41 @@
 {% block title %} Graduate {% endblock title %}
 
 {% block content %}
+<br>
+<div class="post">   
+    <h1><a >Graduates</a></h1>
+</div>
+<div class="post"> 
+    <label class="control-label mr-2" for="fichero1">Add Excel Document</label>
+    <div class="controls row">
+      <input id="fichero1" type="file" style="display:none" name="fichero1">
+      <div class="input-append">
+        <input id="falso1" class="input-xlarge" type="text">
+        <a class="btn btn-file"><i class="fa fa-folder-open-o"></i> Choose</a>
+        <a class="btn btn-success" style="background-color:green"><i class=""></i> Process</a>
+      </div>
+    </div>
+</div>
 
 
+
+<script type="text/javascript">
+  // http://duckranger.com/2012/06/pretty-file-input-field-in-bootstrap/ 
+  // Cuando se pulsa el falso manda el click al autentico
+  $('.btn-file').on('click', function(){
+    $(this).parent().prev().click();
+  });
+  // Cuando el autentico cambia hace cambiar al falso
+  $('input[type=file]').on('change', function(e){
+    $(this).next().find('input').val($(this).val());
+  });
+</script>
 <div class="container">
     <br>
     <a href="{% url 'egresado_add' %}" class="btn-flotante"><i class="fas fa-plus"></i></a>
     <div class="row">
         {% for egresado in egresados %}
-        <div class="col-sm">
+        <div class="col-sm mt-4">
             <div class="card text-center" style="width: 25rem;">
                 <div class="card-header">
                     

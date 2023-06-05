@@ -12,7 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
 from App.models import Carousel
-
+from django.conf import settings
 
 # Frontend
 def frontend(request):
@@ -570,4 +570,78 @@ def egresado_delete(request, egresado_id):
     return HttpResponseRedirect("/egresado_list/")
 
 
+#|------------------------------------|
+#             Laboral
+#|------------------------------------|
+
+# Function to render the page with all produts
+def laboral_list(request):
+    laboral = Laboral.objects.all()
+    print(laboral)
+    all_laboral_list = Laboral.objects.filter(status=1).order_by('-created_at')
+    return render(request, 'App/laboral_list.html', {"laborals": all_laboral_list, "context":laboral})
+
+# Funtion to insert product
+def laboral_add(request):
+    egresado = Egresado.objects.all()
+    empresa = Empresa.objects.all()
+    context  = {
+        'egresado' : egresado,
+        'empresa' : empresa
+    }
+    print(context)
+    if request.method == "POST":
+        if request.POST.get('egresado_id') \
+            and request.POST.get('cargo') \
+            and request.POST.get('fecha_inicio') \
+            and request.POST.get('fecha_fin') \
+            and request.POST.get('empresa_id') :
+            laboral = Laboral()
+            laboral.Egresado_id = request.POST.get('egresado_id')
+            laboral.cargo = request.POST.get('cargo')
+            laboral.fecha_inicio = request.POST.get('fecha_inicio')
+            laboral.fecha_fin = request.POST.get('fecha_fin')
+            laboral.empresa_id = request.POST.get('empresa_id')
+            laboral.status = 1  # Set status=1 by default
+            laboral.created_at = timezone.now()  # Set created_at to current timestamp
+            laboral.updated_at = timezone.now()
+            laboral.save()
+            return HttpResponseRedirect("laboral_list/")
+    else:
+        return render(request, 'App/laboral_add.html',context)
+
+def laboral_edit(request):
+    if request.method == "POST":
+        laboral_id = request.POST.get('id')
+        laboral_Egresado_id = request.POST.get('egresado_id')
+        laboral_cargo = request.POST.get('cargo')
+        laboral_fecha_inicio = request.POST.get('fecha_inicio')
+        laboral_fecha_fin = request.POST.get('fecha_fin')
+        laboral_empresa_id = request.POST.get('empresa_id')
+        laboral = Laboral.objects.get(id=laboral_id)
+        if laboral != None:
+            laboral.Egresado_id = laboral_Egresado_id
+            laboral.cargo = laboral_cargo
+            laboral.fecha_inicio = laboral_fecha_inicio
+            laboral.fecha_fin = laboral_fecha_fin
+            laboral.empresa_id = laboral_empresa_id
+            laboral.save()
+            return HttpResponseRedirect("laboral_list/")
+
+# Function to view candidate individually
+def laboral(request, laboral_id):
+    egresado = Egresado.objects.all()
+    empresa = Empresa.objects.all()
+    laboral = Laboral.objects.get(id = laboral_id)
+    if laboral != None:
+        return render(request, "App/laboral_view.html", {'laboral': laboral, 'egresado': egresado, 'empresa': empresa})
+
+# Delete Function
+def laboral_delete(request, laboral_id):
+    laboral = Laboral.objects.get(id=laboral_id)
+    if laboral:
+        laboral.status = 0
+        laboral.save()
+
+    return HttpResponseRedirect("/laboral_list/")
 

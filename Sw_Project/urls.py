@@ -93,7 +93,19 @@ urlpatterns = [
     path('egresado_edit', views.egresado_edit, name="egresado_edit"),
     # Delete 
     path('egresado_delete/<str:egresado_id>', views.egresado_delete, name="egresado_delete"),
-
+    
+    # WORD
+    path('laboral_list/', views.laboral_list, name="laboral_list"),
+    # Path to add 
+    path('laboral_add',views.laboral_add, name='laboral_add'),
+    # Access data individually
+    path('laboral/<str:laboral_id>', views.laboral, name = "laboral_view"),
+    # Path to edit 
+    path('laboral_edit', views.laboral_edit, name="laboral_edit"),
+    # Delete 
+    path('laboral_delete/<str:laboral_id>', views.laboral_delete, name="laboral_delete"),
+    
+    
     # POSGRADO
     path('posgrado_list/', views.posgrado_list, name="posgrado_list"),
     # Path to add 

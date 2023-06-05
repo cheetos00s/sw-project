@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'egresado_bd',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': '192.168.64.3',
         'PORT': '3306',
     }
 }
@@ -121,6 +121,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
